@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/txt_choice_supplies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/choice_supplies"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_choice_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/choice_description"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_choice_supplies" />
+
+    <ImageView
+        android:id="@+id/img_choice_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39.12dp"
+        android:layout_marginEnd="23.62dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_shaving"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="37dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_choice_description" />
+
+    <TextView
+        android:id="@+id/txt_shaving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/shaving"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/img_shaving"
+        app:layout_constraintTop_toBottomOf="@id/txt_choice_description" />
+
+    <TextView
+        android:id="@+id/txt_shaving_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/shaving_description"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/img_shaving"
+        app:layout_constraintTop_toBottomOf="@id/txt_shaving" />
+
+    <ImageView
+        android:id="@+id/img_shaving_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="87.7dp"
+        android:layout_marginEnd="26.17dp"
+        android:layout_marginBottom="23.09dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        app:layout_constraintBottom_toTopOf="@id/shaving_line"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/shaving_line"
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#EAE9E7"
+        app:layout_constraintStart_toEndOf="@id/img_shaving"
+        app:layout_constraintTop_toBottomOf="@id/txt_shaving_description" />
+
+    <ImageView
+        android:id="@+id/img_tooth_brush"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_shaving" />
+
+    <TextView
+        android:id="@+id/txt_tooth_brush"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tooth_brush"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/img_tooth_brush"
+        app:layout_constraintTop_toBottomOf="@id/shaving_line" />
+
+    <TextView
+        android:id="@+id/txt_tooth_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/tooth_brush_description"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/img_tooth_brush"
+        app:layout_constraintTop_toBottomOf="@id/txt_tooth_brush" />
+
+    <ImageView
+        android:id="@+id/img_tooth_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="87.7dp"
+        android:layout_marginEnd="26.17dp"
+        android:layout_marginBottom="23.09dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        app:layout_constraintBottom_toTopOf="@id/tooth_brush_line"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tooth_brush_line"
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#EAE9E7"
+        app:layout_constraintStart_toEndOf="@id/img_tooth_brush"
+        app:layout_constraintTop_toBottomOf="@id/txt_tooth_description" />
+
+    <ImageView
+        android:id="@+id/img_shower_towel"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_tooth_brush" />
+
+    <TextView
+        android:id="@+id/txt_shower_towl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/shower_tower"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/img_shower_towel"
+        app:layout_constraintTop_toBottomOf="@id/tooth_brush_line" />
+
+    <TextView
+        android:id="@+id/txt_shower_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/shower_tower_description"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/img_shower_towel"
+        app:layout_constraintTop_toBottomOf="@id/txt_shower_towl" />
+
+    <ImageView
+        android:id="@+id/img_shower_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="87.7dp"
+        android:layout_marginEnd="26.17dp"
+        android:layout_marginBottom="23.09dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        app:layout_constraintBottom_toTopOf="@id/shower_line"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/shower_line"
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#EAE9E7"
+        app:layout_constraintStart_toEndOf="@id/img_shower_towel"
+        app:layout_constraintTop_toBottomOf="@id/txt_shower_description" />
+
+
+    <ImageView
+        android:id="@+id/img_dish_cloth"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_shower_towel" />
+
+    <TextView
+        android:id="@+id/txt_dish_cloth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/dish_cloth"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/img_shower_towel"
+        app:layout_constraintTop_toBottomOf="@id/shower_line" />
+
+    <TextView
+        android:id="@+id/txt_dish_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/dish_cloth_description"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/img_dish_cloth"
+        app:layout_constraintTop_toBottomOf="@id/txt_dish_cloth" />
+
+    <ImageView
+        android:id="@+id/img_dish_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="87.7dp"
+        android:layout_marginEnd="26.17dp"
+        android:layout_marginBottom="23.09dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        app:layout_constraintBottom_toTopOf="@id/dish_cloth_line"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/dish_cloth_line"
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#EAE9E7"
+        app:layout_constraintStart_toEndOf="@id/img_dish_cloth"
+        app:layout_constraintTop_toBottomOf="@id/txt_dish_description" />
+
+
+    <ImageView
+        android:id="@+id/img_lens"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_dish_cloth" />
+
+    <TextView
+        android:id="@+id/txt_lens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/lens"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/img_lens"
+        app:layout_constraintTop_toBottomOf="@id/dish_cloth_line" />
+
+    <TextView
+        android:id="@+id/txt_lens_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/lens_description"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/img_lens"
+        app:layout_constraintTop_toBottomOf="@id/txt_lens" />
+
+    <ImageView
+        android:id="@+id/img_lens_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="87.7dp"
+        android:layout_marginEnd="26.17dp"
+        android:layout_marginBottom="23.09dp"
+        android:contentDescription="@string/StringValue"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        app:layout_constraintBottom_toTopOf="@id/lens_line"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/lens_line"
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#EAE9E7"
+        app:layout_constraintStart_toEndOf="@id/img_lens"
+        app:layout_constraintTop_toBottomOf="@id/txt_lens_description" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
