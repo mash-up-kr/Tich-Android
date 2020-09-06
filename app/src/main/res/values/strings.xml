@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Tich Android</string>
+
+    <string name="StringValue">이미지가 열리지 않습니다.</string>
+    <!-- walkthrough -->
+    <string name="walk_01_m">매일 우리 몸과</string>
+    <string name="walk_01_s">맞닿는 생활용품</string>
+    <string name="walk_02_m">한 곳에 모아</string>
+    <string name="walk_02_s">간편하게 관리하고</string>
+    <string name="walk_03_m">건강한 청결함을</string>
+    <string name="walk_03_s">유지해보세요</string>
+    <string name="walk_04_m"></string>
+    <string name="walk_04_s"></string>
+    <string name="walk_skip">Skip</string>
+
+    <!-- main_start -->
+    <string name="txt_sir">님,</string>
+    <string name="txt_hi">안녕하세요.</string>
+    <string name="txt_description">사용하고 계신 용품주기를 등록해주세요</string>
+
+    <!-- choice supplies -->
+    <string name="choice_supplies">용품선택</string>
+    <string name="choice_description">주기별로 관리할 용품을 선택해주세요.</string>
+    <string name="shaving">면도날</string>
+    <string name="shaving_description">상쾌한 면도를 위해</string>
+    <string name="tooth_brush">칫솔</string>
+    <string name="tooth_brush_description">양치질만큼 중요한 칫솔 교체</string>
+    <string name="shower_tower">샤워타올</string>
+    <string name="shower_tower_description">세균의 온상 샤워타올</string>
+    <string name="dish_cloth">행주</string>
+    <string name="dish_cloth_description">주방의 필수품 행주</string>
+    <string name="lens">렌즈</string>
+    <string name="lens_description">눈 건강을 위해</string>
+
+    <!-- add supplies -->
+    <string name="title">제목</string>
+    <string name="title_hint">제목을 입력하세요.</string>
+    <string name="start_date">시작일</string>
+    <string name="start_date_description">소모용품을 교체한 날짜를 선택해주세요.</string>
+    <string name="exchange_period">교체주기</string>
+    <string name="exchange_period_hint">선택해 주세요.</string>
+    <string name="enroll">등록하기</string>
+    <string name="confirm">확인</string>
+    <string name="cycle_description">기본 추천 주기에서 상황에 맞게 조절해보세요.</string>
+    <string name="everyday">매일</string>
+    <string name="everyweek">매주</string>
+    <string name="everymonth">매월</string>
+
+</resources>
