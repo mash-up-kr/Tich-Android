@@ -9,9 +9,11 @@
     <string name="walk_02_s">간편하게 관리하고</string>
     <string name="walk_03_m">건강한 청결함을</string>
     <string name="walk_03_s">유지해보세요</string>
-    <string name="walk_04_m"></string>
-    <string name="walk_04_s"></string>
+    <string name="walk_04_m">당신의 청결한</string>
+    <string name="walk_04_s">생활습관 첫걸음,</string>
+    <string name="walk_04_ss">tich와 함께 만들어봐요.</string>
     <string name="walk_skip">Skip</string>
+    <string name="google_login">구글아이디로 시작하기</string>
 
     <!-- main_start -->
     <string name="txt_sir">님,</string>
