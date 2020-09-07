@@ -28,32 +28,30 @@ class WalkActivity : AppCompatActivity() {
 
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
-            override fun onPageScrollStateChanged(state: Int) {
-            }
+            override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-
             }
 
             override fun onPageSelected(position: Int) {
                 if (position == 3) {
                     hideFunc()
-                } else showFunc()
+                } else {
+                    showFunc()
+                }
             }
         })
 
         btn_walk_next.setOnClickListener {
-            if (currentViewPager == 4) {
-                currentViewPager = 0
-            }
-            view_pager.setCurrentItem(currentViewPager++, true)
-
-            if (currentViewPager == 4) {
-                hideFunc()
+            val current = view_pager.currentItem
+            if (current == 4) {
+                view_pager.setCurrentItem(0, true)
+            } else {
+                view_pager.setCurrentItem(current + 1, true)
             }
         }
     }
