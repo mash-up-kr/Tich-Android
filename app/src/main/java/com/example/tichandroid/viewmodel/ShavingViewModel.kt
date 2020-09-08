@@ -9,7 +9,7 @@ import com.example.tichandroid.network.model.ItemSaveRequestDto
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class MainViewModel(private val model: ItemSaveModel) : BaseViewModel() {
+class ShavingViewModel(private val model: ItemSaveModel) : BaseViewModel() {
 
     private val TAG = "MainViewModel"
 
