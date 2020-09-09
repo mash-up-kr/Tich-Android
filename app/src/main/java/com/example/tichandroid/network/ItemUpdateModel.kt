@@ -1,14 +1,16 @@
 package com.example.tichandroid.network
 
 import com.example.tichandroid.network.model.ItemSaveRequestDto
+import com.example.tichandroid.network.model.ItemUpdateRequestDto
 import io.reactivex.Single
 
-interface ItemSaveModel {
-    fun saveItem(
-        accessToken: String,
+interface ItemUpdateModel {
+    fun updateItem(
+        accessToken:String,
         category: String,
         cycle: Int,
+        itemId: Int,
         startDate: String,
         title: String
-    ): Single<ItemSaveRequestDto>
+    ): Single<ItemUpdateRequestDto>
 }

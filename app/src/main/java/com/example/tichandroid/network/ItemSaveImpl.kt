@@ -6,16 +6,14 @@ import io.reactivex.Single
 
 class ItemSaveImpl(private val service: ItemSaveService) : ItemSaveModel {
     override fun saveItem(
+        accessToken: String,
         category: String,
         cycle: Int,
         startDate: String,
         title: String
     ): Single<ItemSaveRequestDto> {
         return service.saveItem(
-            category = category,
-            cycle = cycle,
-            startDate = startDate,
-            title = title
+            accessToken, category, cycle, startDate, title
         )
     }
 
