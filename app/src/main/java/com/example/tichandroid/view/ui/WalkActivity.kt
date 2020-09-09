@@ -22,8 +22,7 @@ class WalkActivity : AppCompatActivity() {
         dots_indicator.attachViewPager(view_pager)
 
         txt_walk_skip.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            view_pager.currentItem = 4
         }
 
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
