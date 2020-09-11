@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat
 import com.example.tichandroid.R
 import com.example.tichandroid.RxEventBus
 import com.example.tichandroid.base.BaseActivity
-import com.example.tichandroid.databinding.ActivityShavingBinding
 import com.example.tichandroid.viewmodel.ShavingViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_shaving.*

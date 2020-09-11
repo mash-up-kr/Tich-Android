@@ -17,9 +17,9 @@ class ShavingViewModel(private val model: ItemSaveModel) : BaseViewModel() {
     val itemSaveLiveData: LiveData<ItemSaveRequestDto>
         get() = _itemSaveLiveData
 
-    fun saveItem(category: String, cycle: Int, startDate: String, title: String) {
+    fun saveItem(accessToken: String, category: String, cycle: Int, startDate: String, title: String) {
         addDisposable(
-            model.saveItem(category, cycle, startDate, title)
+            model.saveItem(accessToken, category, cycle, startDate, title)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
