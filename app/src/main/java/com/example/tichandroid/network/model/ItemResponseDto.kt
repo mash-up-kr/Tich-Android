@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class ItemResponseDto(
     @SerializedName("categoryId")
-    var categoryId:Int,
+    var categoryId: Int,
     @SerializedName("cycle")
-    var cycle:Int,
+    var cycle: Int,
     @SerializedName("id")
-    var id:Int,
+    var id: Int,
     @SerializedName("latestDate")
-    var latestDate:String,
+    var latestDate: String,
     @SerializedName("scheduledDate")
-    var scheduledDate:String,
+    var scheduledDate: String,
     @SerializedName("startDate")
-    var startDate:String,
+    var startDate: String,
     @SerializedName("userId")
-    var userId:Int
+    var userId: Int
 )

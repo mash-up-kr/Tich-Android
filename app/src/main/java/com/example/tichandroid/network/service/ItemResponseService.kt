@@ -11,7 +11,7 @@ interface ItemResponseService {
     @Headers("Content-Type: application/json")
     @GET("api/items")
     fun getItems(
-        @Header("accessToken") accessToken:String,
+        @Header("accessToken") accessToken: String,
         @Query("categoryId") categoryId: Int,
         @Query("cycle") cycle: Int,
         @Query("latestDate") latestDate: String,

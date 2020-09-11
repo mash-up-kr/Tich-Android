@@ -1,11 +1,9 @@
 package com.example.tichandroid.view.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.example.tichandroid.MainActivity
 import com.example.tichandroid.R
 import com.example.tichandroid.view.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_walk.*
