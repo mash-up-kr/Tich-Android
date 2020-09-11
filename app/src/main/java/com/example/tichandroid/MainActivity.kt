@@ -20,27 +20,22 @@ class MainActivity : AppCompatActivity() {
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
-        btn_continue.setOnClickListener {
-            clickBtn()
-
-            Handler().postDelayed({
-                originBtn()
-            }, 1000)
-
-            SuppliesFragment().apply {
-                show(supportFragmentManager, SuppliesFragment.TAG)
-            }
-        }
+        btn_continue.setOnClickListener { handleClickContinue() }
     }
 
     private fun originBtn() {
-        btn_continue.setTextColor(ContextCompat.getColor(baseContext, R.color.colorText))
-        btn_continue.setBackgroundResource(R.drawable.button_border)
+        btn_continue.apply {
+            setTextColor(ContextCompat.getColor(baseContext, R.color.colorText))
+            setBackgroundResource(R.drawable.button_border)
+        }
     }
 
-    private fun clickBtn() {
-        btn_continue.setBackgroundResource(R.drawable.button_click_border)
-        btn_continue.setTextColor(ContextCompat.getColor(this, R.color.colorWhite))
-
+    private fun handleClickContinue() {
+        btn_continue.apply {
+            setBackgroundResource(R.drawable.button_click_border)
+            setTextColor(ContextCompat.getColor(this@MainActivity, R.color.colorWhite))
+        }
+        Handler().postDelayed(::originBtn, 1000)
+        SuppliesFragment().show(supportFragmentManager, SuppliesFragment.TAG)
     }
 }
