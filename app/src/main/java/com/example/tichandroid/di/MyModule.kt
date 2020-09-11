@@ -5,7 +5,7 @@ import com.example.tichandroid.CONNECT_TIMEOUT
 import com.example.tichandroid.READ_TIMEOUT
 import com.example.tichandroid.WRITE_TIMEOUT
 import com.example.tichandroid.network.service.ItemSaveService
-import com.example.tichandroid.viewmodel.MainViewModel
+import com.example.tichandroid.viewmodel.ShavingViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.ext.koin.viewModel
@@ -50,7 +50,7 @@ var modelPart = module {
 
 var viewModelPart = module {
     viewModel {
-        MainViewModel(get())
+        ShavingViewModel(get())
     }
 }
 
