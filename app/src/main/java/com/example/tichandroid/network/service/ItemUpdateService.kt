@@ -1,6 +1,5 @@
 package com.example.tichandroid.network.service
 
-import com.example.tichandroid.network.model.ItemSaveRequestDto
 import com.example.tichandroid.network.model.ItemUpdateRequestDto
 import io.reactivex.Single
 import retrofit2.http.Header
@@ -12,7 +11,7 @@ interface ItemUpdateService {
     @Headers("Content-Type: application/json")
     @PUT("api/items")
     fun updateItem(
-        @Header("accessToken") accessToken:String,
+        @Header("accessToken") accessToken: String,
         @Query("category") category: String,
         @Query("cycle") cycle: Int,
         @Query("itemId") itemId: Int,

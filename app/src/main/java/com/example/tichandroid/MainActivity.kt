@@ -1,15 +1,13 @@
 package com.example.tichandroid
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.example.tichandroid.view.ui.SuppliesFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_shaving.*
-import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
 import kotlinx.android.synthetic.main.supplies_bottom_sheet.*
 
 class MainActivity : AppCompatActivity() {

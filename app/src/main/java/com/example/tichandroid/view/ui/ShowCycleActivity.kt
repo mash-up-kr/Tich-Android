@@ -1,7 +1,7 @@
 package com.example.tichandroid.view.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tichandroid.R
 import kotlinx.android.synthetic.main.activity_show_cycle.*
 import java.text.SimpleDateFormat

@@ -17,7 +17,13 @@ class ShavingViewModel(private val model: ItemSaveModel) : BaseViewModel() {
     val itemSaveLiveData: LiveData<ItemSaveRequestDto>
         get() = _itemSaveLiveData
 
-    fun saveItem(accessToken: String, category: String, cycle: Int, startDate: String, title: String) {
+    fun saveItem(
+        accessToken: String,
+        category: String,
+        cycle: Int,
+        startDate: String,
+        title: String
+    ) {
         addDisposable(
             model.saveItem(accessToken, category, cycle, startDate, title)
                 .subscribeOn(Schedulers.io())

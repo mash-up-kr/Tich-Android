@@ -46,7 +46,7 @@ class CycleFragment : BottomSheetDialogFragment() {
             clickEveryMonth()
         }
 
-        seek_bar.setOnSeekBarChangeListener(object  : SeekBar.OnSeekBarChangeListener {
+        seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 TODO("Not yet implemented")
             }
