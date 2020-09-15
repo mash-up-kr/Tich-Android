@@ -1,33 +1,25 @@
 package com.example.tichandroid.view.ui
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tichandroid.R
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.mashup.android.base.extension.inflate
 import kotlinx.android.synthetic.main.supplies_bottom_sheet.*
 
 class SuppliesFragment : BottomSheetDialogFragment() {
-
-    companion object {
-        const val TAG = "BottomSheetFragment"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.supplies_bottom_sheet, container, false)
-    }
+    ): View? = container?.inflate(inflater, R.layout.supplies_bottom_sheet)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         img_choice_close.setOnClickListener {
             activity?.supportFragmentManager
                 ?.beginTransaction()
@@ -35,8 +27,11 @@ class SuppliesFragment : BottomSheetDialogFragment() {
                 ?.commit()
         }
         img_shaving_choice.setOnClickListener {
-            val intent = Intent(context, ShavingActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(requireContext(), ShavingActivity::class.java))
         }
+    }
+
+    companion object {
+        const val TAG = "BottomSheetFragment"
     }
 }

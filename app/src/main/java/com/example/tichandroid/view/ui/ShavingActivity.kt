@@ -1,30 +1,18 @@
 package com.example.tichandroid.view.ui
 
 import android.content.Intent
-import android.os.Build
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.example.tichandroid.R
 import com.example.tichandroid.RxEventBus
-import com.example.tichandroid.base.BaseActivity
-import com.example.tichandroid.databinding.ActivityShavingBinding
-import com.example.tichandroid.viewmodel.ShavingViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_shaving.*
 import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
 import kotlinx.android.synthetic.main.startdate_bottom_sheet.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class ShavingActivity : AppCompatActivity() {

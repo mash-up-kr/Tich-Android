@@ -1,8 +1,6 @@
 package com.example.tichandroid.network
 
-import com.example.tichandroid.network.model.ItemSaveRequestDto
 import com.example.tichandroid.network.model.ItemUpdateRequestDto
-import com.example.tichandroid.network.service.ItemSaveService
 import com.example.tichandroid.network.service.ItemUpdateService
 import io.reactivex.Single
 
