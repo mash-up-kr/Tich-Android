@@ -121,7 +121,7 @@ class ShavingActivity : AppCompatActivity() {
     }
 
     private fun originBtn() {
-        btnEnroll.setTextColor(ContextCompat.getColor(baseContext, R.color.colorText))
+        btnEnroll.setTextColor(ContextCompat.getColor(baseContext, R.color.colorCaption))
         btnEnroll.setBackgroundResource(R.drawable.button_border)
     }
 
