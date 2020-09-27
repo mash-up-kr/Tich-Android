@@ -6,10 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import com.example.tichandroid.base.BaseViewModel
 import com.example.tichandroid.network.ItemSaveModel
 import com.example.tichandroid.network.model.ItemSaveRequestDto
+import com.example.tichandroid.reactivex.scheduler.BaseSchedulerProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class ShavingViewModel(private val model: ItemSaveModel) : BaseViewModel() {
+class ShavingViewModel(
+    schedulerProvider: BaseSchedulerProvider,
+    private val model: ItemSaveModel
+) : BaseViewModel(schedulerProvider) {
 
     private val TAG = "MainViewModel"
 
