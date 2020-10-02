@@ -19,7 +19,7 @@
         android:id="@+id/dots_indicator"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="147dp"
+        android:layout_marginTop="220dp"
         app:dot_tint="@color/colorBlue"
         app:layout_constraintTop_toTopOf="parent" />
 
