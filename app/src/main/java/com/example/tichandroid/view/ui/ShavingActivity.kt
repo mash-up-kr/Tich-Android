@@ -3,19 +3,26 @@ package com.example.tichandroid.view.ui
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.example.tichandroid.R
 import com.example.tichandroid.RxEventBus
+import com.example.tichandroid.view.ui.showcycle.ShowCycleActivity
+import com.example.tichandroid.viewmodel.ShavingViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_shaving.*
 import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
 import kotlinx.android.synthetic.main.startdate_bottom_sheet.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class ShavingActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<ShavingViewModel>()
 
     private lateinit var dateSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var cycleSheetBehavior: BottomSheetBehavior<ConstraintLayout>
