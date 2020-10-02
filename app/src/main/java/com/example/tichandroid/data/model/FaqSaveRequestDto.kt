@@ -1,4 +1,4 @@
-package com.example.tichandroid.network.model
+package com.example.tichandroid.data.model
 
 import com.google.gson.annotations.SerializedName
 

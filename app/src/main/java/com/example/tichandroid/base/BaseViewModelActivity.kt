@@ -2,19 +2,11 @@ package com.example.tichandroid.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 
-abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatActivity() {
-
-    lateinit var viewDataBinding: T
-
-    abstract val layoutResourceId: Int
-
-    abstract val viewModel: R
+abstract class BaseViewModelActivity : AppCompatActivity() {
 
     private val disposables by lazy { CompositeDisposable() }
 
@@ -28,6 +20,11 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewDataBinding = DataBindingUtil.setContentView(this, layoutResourceId)
+        onSetUpViews()
+        onBindViewModels()
     }
+
+    abstract fun onBindViewModels()
+
+    abstract fun onSetUpViews()
 }
