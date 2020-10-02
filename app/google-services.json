@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "153786191085",
+    "firebase_url": "https://tichandroid-291309.firebaseio.com",
+    "project_id": "tichandroid-291309",
+    "storage_bucket": "tichandroid-291309.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153786191085:android:d295ef18f2ae8f4d4450e4",
+        "android_client_info": {
+          "package_name": "com.example.tichandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "153786191085-rmvfp51pi3p19ivjf7dn3ovll1p9fhs3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tichandroid",
+            "certificate_hash": "8704ef6346312ef464a426417df50fd05d469b67"
+          }
+        },
+        {
+          "client_id": "153786191085-tnk5spddlbctica7c71kr6dcjid45kjl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_LT96NU6m01J_GqhjGcYj7l5EU3cbK_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "153786191085-tnk5spddlbctica7c71kr6dcjid45kjl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
