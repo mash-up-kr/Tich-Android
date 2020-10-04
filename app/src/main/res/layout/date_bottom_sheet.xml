@@ -27,19 +27,19 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:text="@string/start_date_description"
-        android:textColor="#535251"
+        android:textColor="@color/colorItemTitle"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_start_date" />
 
     <ImageView
         android:id="@+id/img_date_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="16.27dp"
+        android:layout_height="16.27dp"
+        android:layout_marginTop="39.12dp"
         android:layout_marginEnd="23.62dp"
         android:contentDescription="@string/StringValue"
-        android:src="@drawable/ic_baseline_close_24"
+        android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,16 +47,20 @@
         android:id="@+id/datePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
+        android:theme="@style/AppTheme.DatePicker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_start_description" />
 
 
     <Button
-        android:id="@+id/btn_confirm"
+        android:id="@+id/btn_date_confirm"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
@@ -64,25 +68,9 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_border"
         android:text="@string/confirm"
-        android:textColor="#A2ABAD"
+        android:textColor="@color/colorText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/datePicker" />
-
-    <Button
-        android:id="@+id/btn_confirm_click"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_click_border"
-        android:text="@string/confirm"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/datePicker" />
 

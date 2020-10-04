@@ -9,4 +9,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorNavy">#2F3E50</color>
     <color name="colorText">#A2ABAD</color>
+    <color name="colorItemTitle">#535251</color>
+    <color name="colorItemSub">#979494</color>
+    <color name="colorThumb">#F8F7F4</color>
+    <color name="colorBackground">#F8F7F5</color>
 </resources>
