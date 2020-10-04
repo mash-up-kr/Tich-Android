@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txt_walk_main"
+        android:id="@+id/firstTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_walk_sub"
+        android:id="@+id/secondTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/walk_01_s"
@@ -29,9 +29,10 @@
         android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_walk_main" />
+        app:layout_constraintTop_toBottomOf="@id/firstTitle" />
 
     <ImageView
+        android:id="@+id/illustration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/img_walkthrough_01"

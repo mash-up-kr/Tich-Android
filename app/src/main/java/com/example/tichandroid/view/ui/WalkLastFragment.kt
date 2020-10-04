@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import kotlinx.android.synthetic.main.fragment_walk_last.*
 
 
 class WalkLastFragment : Fragment() {
@@ -26,8 +27,6 @@ class WalkLastFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_walk_last, container, false)
-        val buttonGoogleLogin: com.shobhitpuri.custombuttons.GoogleSignInButton =
-            view.findViewById(R.id.google_login)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -35,13 +34,17 @@ class WalkLastFragment : Fragment() {
         googleSignInClient = GoogleSignIn.getClient(view.context, gso)
         auth = FirebaseAuth.getInstance()
 
-        buttonGoogleLogin.setOnClickListener {
-            signIn()
-        }
         return view
     }
 
-    private fun signIn() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        googleLoginBtn.setOnClickListener {
+            onSignInButtonClick()
+        }
+    }
+
+    private fun onSignInButtonClick() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
@@ -51,11 +54,9 @@ class WalkLastFragment : Fragment() {
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                val account = task.getResult(ApiException::class.java)!!
-                Log.d(TAG, "firebaseAuthWithGoogle email: " + account.email)
-                Log.d(TAG, "firebaseAuthWithGoogle idToken: " + account.idToken)
-                Log.d(TAG, "firebaseAuthWithGoogle displayName: " + account.displayName)
-                firebaseAuthWithGoogle(account.idToken!!)
+                val account = task.getResult(ApiException::class.java)
+                // TODO: account?.email, idToken, displayName 전달 필요
+                account?.idToken?.let { firebaseAuthWithGoogle(it) }
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
             }
@@ -67,7 +68,6 @@ class WalkLastFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
