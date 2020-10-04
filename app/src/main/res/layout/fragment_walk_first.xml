@@ -8,26 +8,36 @@
         android:id="@+id/txt_walk_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="104dp"
+        android:gravity="center"
+        android:layout_marginTop="90dp"
+        android:text="@string/walk_01_m"
         android:textColor="@color/colorBlack"
-        android:textSize="24sp"
+        android:textSize="32sp"
+        android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/walk_01_m" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_walk_sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/walk_01_s"
         android:textColor="@color/colorBlack"
-        android:textSize="24sp"
+        android:textSize="32sp"
         android:textStyle="bold"
+        android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_walk_main"
-        android:text="@string/walk_01_s" />
+        app:layout_constraintTop_toBottomOf="@id/txt_walk_main" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/img_walkthrough_01"
+        android:layout_marginBottom="118dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
