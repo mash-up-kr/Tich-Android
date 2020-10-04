@@ -12,8 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ui.ShowCycleActivity" />
-        <activity android:name=".view.ui.ShavingActivity" />
+        <activity android:name=".view.ui.showcycle.ShowCycleActivity" />
+        <activity android:name=".view.ui.items.ShavingActivity" />
+        <activity android:name=".view.ui.items.ToothBrushActivity" />
+        <activity android:name=".view.ui.items.TowelActivity" />
+        <activity android:name=".view.ui.items.DishClothActivity" />
+        <activity android:name=".view.ui.items.LensActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".view.ui.WalkActivity">
             <intent-filter>

@@ -1,32 +1,59 @@
-package com.example.tichandroid.view.ui
+package com.example.tichandroid.view.ui.items
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.example.tichandroid.R
-import com.example.tichandroid.RxEventBus
+import com.example.tichandroid.util.RxEventBus
+import com.example.tichandroid.view.ui.CycleDialogFragment
+import com.example.tichandroid.view.ui.StartDateDialogFragment
+import com.example.tichandroid.view.ui.showcycle.ShowCycleActivity
+import com.example.tichandroid.viewmodel.ShavingViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.activity_shaving.*
+import com.mashup.android.base.extension.showToast
+import kotlinx.android.synthetic.main.activity_shaving.btnEnroll
+import kotlinx.android.synthetic.main.activity_shaving.editTitle
+import kotlinx.android.synthetic.main.activity_shaving.imgBack
+import kotlinx.android.synthetic.main.activity_shaving.imgCalender
+import kotlinx.android.synthetic.main.activity_shaving.imgPeriod
+import kotlinx.android.synthetic.main.activity_shaving.imgStart
+import kotlinx.android.synthetic.main.activity_shaving.imgTitle
+import kotlinx.android.synthetic.main.activity_shaving.img_set_period
+import kotlinx.android.synthetic.main.activity_shaving.txtChoice
+import kotlinx.android.synthetic.main.activity_shaving.txtDate
+import kotlinx.android.synthetic.main.activity_shaving.txtPeriod
+import kotlinx.android.synthetic.main.activity_shaving.txtStart
+import kotlinx.android.synthetic.main.activity_shaving.txtTitle
+import kotlinx.android.synthetic.main.activity_tooth_brush.*
 import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
-import kotlinx.android.synthetic.main.startdate_bottom_sheet.*
+import kotlinx.android.synthetic.main.date_bottom_sheet.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ShavingActivity : AppCompatActivity() {
+class ToothBrushActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<ShavingViewModel>()
 
     private lateinit var dateSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var cycleSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shaving)
+        setContentView(R.layout.activity_tooth_brush)
+
+        dateSheetBehavior = BottomSheetBehavior.from(date_bottomSheet)
+        cycleSheetBehavior = BottomSheetBehavior.from(cycle_bottomSheet)
 
         initNow()
 
-        imgBack.setOnClickListener { finish() }
+        imgBack.setOnClickListener {
+            finish()
+        }
 
         imgTitle.setOnClickListener {
             clickTitle()
@@ -41,31 +68,48 @@ class ShavingActivity : AppCompatActivity() {
         }
 
         btnEnroll.setOnClickListener {
-            clickBtn()
 
-            val intent = Intent(this, ShowCycleActivity::class.java)
-            startActivity(intent)
+            when (txt_tooth_brush.text) {
+                "제목을 입력하세요." ->
+                    baseContext.showToast(R.string.empty_title)
+                "선택해 주세요." ->
+                    baseContext.showToast(R.string.empty_cycle)
+                else -> {
+                    clickBtn()
 
-            Handler().postDelayed({
-                originBtn()
-            }, 2000)
+                    Handler().postDelayed(::originBtn, 1000)
+
+                    viewModel.saveItem(
+                        txt_tooth_brush.text.toString(),
+                        txtChoice.text.toString().toInt(),
+                        txtDate.text.toString(),
+                        editTitle.text.toString()
+                    )
+
+                    val intent = Intent(baseContext, ShowCycleActivity::class.java)
+                    startActivity(intent)
+
+                }
+            }
         }
 
         imgCalender.setOnClickListener {
-            StartDateFragment().apply {
-                show(supportFragmentManager, StartDateFragment.TAG)
+            StartDateDialogFragment().apply {
+                show(supportFragmentManager, StartDateDialogFragment.TAG)
             }
         }
 
         img_set_period.setOnClickListener {
-            CycleFragment().apply {
-                show(supportFragmentManager, CycleFragment.TAG)
+            CycleDialogFragment().apply {
+                show(supportFragmentManager, CycleDialogFragment.TAG)
             }
         }
+
         dateSheetBehavior = BottomSheetBehavior.from(date_bottomSheet)
         cycleSheetBehavior = BottomSheetBehavior.from(cycle_bottomSheet)
     }
 
+    @SuppressLint("CheckResult")
     override fun onResume() {
         super.onResume()
 
@@ -79,6 +123,7 @@ class ShavingActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SimpleDateFormat")
     private fun initNow() {
         val sdf = SimpleDateFormat("yyyy.MM.dd.(EE)")
         val currentDate = sdf.format(Date())
