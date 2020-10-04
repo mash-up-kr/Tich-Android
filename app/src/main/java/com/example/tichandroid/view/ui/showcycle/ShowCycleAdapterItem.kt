@@ -8,9 +8,10 @@ sealed class ShowCycleAdapterItem(val id: Int) {
     override fun hashCode(): Int = id
     override fun equals(other: Any?): Boolean = false
 
-    data class TodayDate(
-        val date: String
-    ) : ShowCycleAdapterItem("Today-Date-$date".hashCode())
+    data class Header(
+        val date: String,
+        val textId: Int
+    ) : ShowCycleAdapterItem("Header-$date".hashCode())
 
     data class Banner(
         val text: String,
@@ -25,9 +26,8 @@ sealed class ShowCycleAdapterItem(val id: Int) {
         val itemId: Int,
         val resId: Int,
         val title: String,
-        val startDate: String,
-        val latestDate: String,
-        val scheduledDate: String,
+        val nextCycleDate: String,
+        val dueDate: String,
         val cycle: String
     ) : ShowCycleAdapterItem(itemId)
 }

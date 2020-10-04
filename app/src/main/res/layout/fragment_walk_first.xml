@@ -8,12 +8,12 @@
         android:id="@+id/txt_walk_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
         android:text="@string/walk_01_m"
         android:textColor="@color/colorBlack"
         android:textSize="32sp"
-        android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,11 +22,11 @@
         android:id="@+id/txt_walk_sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:includeFontPadding="false"
         android:text="@string/walk_01_s"
         android:textColor="@color/colorBlack"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_walk_main" />
@@ -34,10 +34,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/img_walkthrough_01"
         android:layout_marginBottom="118dp"
+        android:background="@drawable/img_walkthrough_01"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
