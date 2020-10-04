@@ -29,7 +29,6 @@
             android:id="@+id/txt_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:includeFontPadding="false"
             android:text="@string/walk_04_m"
             android:textColor="@color/colorBlack"
             android:textSize="21sp" />
@@ -39,7 +38,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:includeFontPadding="false"
             android:text="@string/walk_04_s"
             android:textColor="@color/colorBlack"
             android:textSize="21sp"
@@ -51,7 +49,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:includeFontPadding="false"
         android:text="@string/walk_04_ss"
         android:textColor="@color/colorBlack"
         android:textSize="21sp"

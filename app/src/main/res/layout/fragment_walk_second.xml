@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:gravity="center"
-        android:includeFontPadding="false"
         android:text="@string/walk_02_m"
         android:textColor="@color/colorBlack"
         android:textSize="32sp"
@@ -22,7 +21,6 @@
         android:id="@+id/txt_walk_sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:includeFontPadding="false"
         android:text="@string/walk_02_s"
         android:textColor="@color/colorBlack"
         android:textSize="32sp"
@@ -34,7 +32,6 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="118dp"
         android:background="@drawable/img_walkthrough_02"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
