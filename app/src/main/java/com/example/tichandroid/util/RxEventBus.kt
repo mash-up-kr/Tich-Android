@@ -1,4 +1,4 @@
-package com.example.tichandroid
+package com.example.tichandroid.util
 
 import io.reactivex.subjects.PublishSubject
 
