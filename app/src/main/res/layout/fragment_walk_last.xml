@@ -18,12 +18,11 @@
         android:id="@+id/titleLayout"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:gravity="center"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/tichImg"
         app:layout_constraintStart_toEndOf="@id/tichImg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/imgTich">
 
         <TextView
             android:id="@+id/firstTitle"
@@ -31,8 +30,7 @@
             android:layout_height="wrap_content"
             android:text="@string/walk_04_m"
             android:textColor="@color/colorBlack"
-            android:textSize="21sp"
-            android:includeFontPadding="false"/>
+            android:textSize="21sp" />
 
         <TextView
             android:id="@+id/secondTitle"
@@ -42,8 +40,7 @@
             android:text="@string/walk_04_s"
             android:textColor="@color/colorBlack"
             android:textSize="21sp"
-            android:textStyle="bold"
-            android:includeFontPadding="false"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
@@ -54,7 +51,6 @@
         android:text="@string/walk_04_ss"
         android:textColor="@color/colorBlack"
         android:textSize="21sp"
-        android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleLayout" />

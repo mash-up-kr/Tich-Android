@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun originBtn() {
         btn_continue.apply {
-            setTextColor(ContextCompat.getColor(baseContext, R.color.colorText))
+            setTextColor(ContextCompat.getColor(baseContext, R.color.colorCaption))
             setBackgroundResource(R.drawable.button_border)
         }
     }
