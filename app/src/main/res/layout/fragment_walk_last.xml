@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imgTich"
+        android:id="@+id/tichImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -15,18 +15,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/ll_text"
+        android:id="@+id/titleLayout"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imgTich"
+        app:layout_constraintTop_toBottomOf="@+id/tichImg"
+        app:layout_constraintStart_toEndOf="@id/tichImg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgTich">
 
         <TextView
-            android:id="@+id/txt_main"
+            android:id="@+id/firstTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/walk_04_m"
@@ -34,7 +33,7 @@
             android:textSize="21sp" />
 
         <TextView
-            android:id="@+id/txt_sub"
+            android:id="@+id/secondTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -45,7 +44,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/txt_ss"
+        android:id="@+id/thirdTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -54,19 +53,20 @@
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_text" />
+        app:layout_constraintTop_toBottomOf="@id/titleLayout" />
 
     <ImageView
+        android:id="@+id/illustration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="118dp"
         android:background="@drawable/img_walkthrough_04"
-        app:layout_constraintBottom_toBottomOf="@id/google_login"
+        app:layout_constraintBottom_toBottomOf="@id/googleLoginBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.shobhitpuri.custombuttons.GoogleSignInButton
-        android:id="@+id/google_login"
+        android:id="@+id/googleLoginBtn"
         android:layout_width="320dp"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
