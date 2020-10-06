@@ -16,14 +16,14 @@ class ShavingViewModel @ViewModelInject constructor(
     private val itemRepository: ItemRepository
 ) : BaseViewModel(schedulerProvider) {
 
-    private val TAG = "ShasvingViewModel"
+    private val TAG = "ShavingViewModel"
 
     private val _itemSaveLiveData = MutableLiveData<Item>()
+
     val itemSaveLiveData: LiveData<Item>
         get() = _itemSaveLiveData
 
     fun saveItem(
-        accessToken: String,
         category: String,
         cycle: Int,
         startDate: String,

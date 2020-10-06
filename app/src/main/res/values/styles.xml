@@ -32,4 +32,10 @@
         <item name="indicatorRadius">6dp</item>
         <item name="indicatorPadding">8dp</item>
     </style>
+
+    <!--Date Picker divider-->
+    <style name="AppTheme.DatePicker" parent="AppTheme">
+        <item name="colorControlNormal">@color/colorBlue</item>
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+    </style>
 </resources>
