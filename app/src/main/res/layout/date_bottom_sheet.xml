@@ -27,13 +27,13 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:text="@string/start_date_description"
-        android:textColor="@color/colorItemTitle"
+        android:textColor="@color/colorGray4"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_start_date" />
 
     <ImageView
-        android:id="@+id/img_date_close"
+        android:id="@+id/imgDateClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="39.12dp"
@@ -60,7 +60,7 @@
 
 
     <Button
-        android:id="@+id/btn_date_confirm"
+        android:id="@+id/btnDateConfirm"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"

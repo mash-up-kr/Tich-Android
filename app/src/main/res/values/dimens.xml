@@ -2,4 +2,5 @@
 <resources>
     <dimen name="loading_view_indicator_radius_default">6dp</dimen>
     <dimen name="loading_view_indicator_padding_default">8dp</dimen>
+    <dimen name="bottom_sheet_peek_height">500dp</dimen>
 </resources>

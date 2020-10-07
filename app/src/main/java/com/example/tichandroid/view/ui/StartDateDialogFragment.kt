@@ -34,7 +34,7 @@ class StartDateDialogFragment : BottomSheetDialogFragment() {
 
         calendar = Calendar.getInstance()
 
-        img_date_close.setOnClickListener {
+        imgDateClose.setOnClickListener {
             activity?.supportFragmentManager
                 ?.beginTransaction()
                 ?.remove(this)
@@ -42,7 +42,7 @@ class StartDateDialogFragment : BottomSheetDialogFragment() {
         }
 
 
-        btn_date_confirm.setOnClickListener {
+        btnDateConfirm.setOnClickListener {
             val selectedDate = formatDate(datePicker.year, datePicker.month, datePicker.dayOfMonth)
             RxEventBus.setDate(selectedDate)
 
@@ -65,7 +65,7 @@ class StartDateDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun clickBtn() {
-        btn_date_confirm.apply {
+        btnDateConfirm.apply {
             setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
             setBackgroundResource(R.drawable.button_click_border)
         }

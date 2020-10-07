@@ -30,29 +30,29 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        img_cycle_close.setOnClickListener {
+        imgCycleClose.setOnClickListener {
             activity?.supportFragmentManager
                 ?.beginTransaction()
                 ?.remove(this)
                 ?.commit()
         }
 
-        btn_every_day.setOnClickListener {
+        btnEveryDay.setOnClickListener {
             clickEveryDay()
             txt_above_thumb.visibility = View.GONE
         }
 
-        btn_every_week.setOnClickListener {
+        btnEveryWeek.setOnClickListener {
             clickEveryWeek()
             txt_above_thumb.visibility = View.GONE
         }
 
-        btn_every_month.setOnClickListener {
+        btnEveryMonth.setOnClickListener {
             clickEveryMonth()
             txt_above_thumb.visibility = View.GONE
         }
 
-        btn_cycle_confirm.setOnClickListener {
+        btnCycleConfirm.setOnClickListener {
 
             if (seek_bar.progress == 0) {
                 context?.showToast(R.string.empty_cycle)
@@ -71,12 +71,12 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun clickEveryDay() {
-        btn_every_day.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
-        btn_every_day.setBackgroundResource(R.drawable.cycle_border_left_click)
-        btn_every_week.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-        btn_every_week.setBackgroundResource(R.drawable.cycle_border_center)
-        btn_every_month.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-        btn_every_month.setBackgroundResource(R.drawable.cycle_border_right)
+        btnEveryDay.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
+        btnEveryDay.setBackgroundResource(R.drawable.cycle_border_left_click)
+        btnEveryWeek.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+        btnEveryWeek.setBackgroundResource(R.drawable.cycle_border_center)
+        btnEveryMonth.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+        btnEveryMonth.setBackgroundResource(R.drawable.cycle_border_right)
 
         txt_first_date.setText(R.string.day_min)
         txt_last_date.setText(R.string.day_max)
@@ -106,12 +106,12 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun clickEveryWeek() {
-        btn_every_week.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
-        btn_every_week.setBackgroundResource(R.drawable.cycle_border_center_click)
-        btn_every_day.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-        btn_every_day.setBackgroundResource(R.drawable.cycle_border_left)
-        btn_every_month.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-        btn_every_month.setBackgroundResource(R.drawable.cycle_border_right)
+        btnEveryWeek.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
+        btnEveryWeek.setBackgroundResource(R.drawable.cycle_border_center_click)
+        btnEveryDay.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+        btnEveryDay.setBackgroundResource(R.drawable.cycle_border_left)
+        btnEveryMonth.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+        btnEveryMonth.setBackgroundResource(R.drawable.cycle_border_right)
 
         txt_first_date.setText(R.string.week_min)
         txt_last_date.setText(R.string.week_max)
@@ -142,12 +142,12 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun clickEveryMonth() {
-        btn_every_month.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
-        btn_every_month.setBackgroundResource(R.drawable.cycle_border_right_click)
-        btn_every_week.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-        btn_every_week.setBackgroundResource(R.drawable.cycle_border_center)
-        btn_every_day.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-        btn_every_day.setBackgroundResource(R.drawable.cycle_border_left)
+        btnEveryMonth.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
+        btnEveryMonth.setBackgroundResource(R.drawable.cycle_border_right_click)
+        btnEveryWeek.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+        btnEveryWeek.setBackgroundResource(R.drawable.cycle_border_center)
+        btnEveryDay.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+        btnEveryDay.setBackgroundResource(R.drawable.cycle_border_left)
 
         txt_first_date.setText(R.string.month_min)
         txt_last_date.setText(R.string.month_max)
@@ -177,7 +177,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun clickBtn() {
-        btn_cycle_confirm.apply {
+        btnCycleConfirm.apply {
             setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
             setBackgroundResource(R.drawable.button_click_border)
         }
