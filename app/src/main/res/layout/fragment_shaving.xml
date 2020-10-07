@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.ui.items.ShavingActivity">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,17 +17,38 @@
             android:contentDescription="@string/StringValue"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/shaving_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26.17dp"
+            android:layout_marginTop="20.09dp"
+            android:contentDescription="@string/StringValue"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/txtShaving"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="15dp"
             android:text="@string/shaving"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:contentDescription="@string/StringValue"
+            android:src="@drawable/ic_dropdown"
+            app:layout_constraintStart_toEndOf="@id/txtShaving"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
@@ -57,7 +76,7 @@
             android:layout_marginStart="34dp"
             android:layout_marginTop="18dp"
             android:text="@string/title"
-            android:textColor="@color/colorItemSub"
+            android:textColor="@color/colorGray5"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view" />
@@ -71,7 +90,7 @@
             android:hint="@string/title_hint"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:textColorHint="@color/colorItemTitle"
+            android:textColorHint="@color/colorGray4"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +114,7 @@
             android:layout_marginStart="34dp"
             android:layout_marginTop="12dp"
             android:text="@string/start_date"
-            android:textColor="@color/colorItemSub"
+            android:textColor="@color/colorGray5"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgTitle" />
@@ -105,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
-            android:textColor="@color/colorItemTitle"
+            android:textColor="@color/colorGray4"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -113,12 +132,12 @@
 
         <ImageView
             android:id="@+id/imgCalender"
-            android:layout_width="13.5dp"
-            android:layout_height="15dp"
-            android:layout_marginTop="33dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
             android:layout_marginEnd="39.5dp"
             android:contentDescription="@string/StringValue"
-            android:src="@drawable/ic_baseline_date_range_24"
+            android:src="@drawable/ic_date_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgTitle" />
 
@@ -139,7 +158,7 @@
             android:layout_marginStart="34dp"
             android:layout_marginTop="4dp"
             android:text="@string/exchange_period"
-            android:textColor="@color/colorItemSub"
+            android:textColor="@color/colorGray5"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgStart" />
@@ -150,20 +169,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
             android:text="@string/exchange_period_hint"
-            android:textColor="@color/colorItemTitle"
+            android:textColor="@color/colorGray4"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtPeriod" />
 
         <ImageView
-            android:id="@+id/img_set_period"
+            android:id="@+id/imgSetPeriod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="34dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="38dp"
             android:contentDescription="@string/StringValue"
-            android:src="@drawable/ic_baseline_unfold_more_24"
+            android:src="@drawable/ic_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgStart" />
 
