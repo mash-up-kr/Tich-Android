@@ -16,4 +16,6 @@ class AuthRemoteDataSource @Inject constructor(private val service: AuthService)
         "name" to name
         "email" to email
     })
+
+    fun signIn(): Single<UserInfo> = service.signIn()
 }

@@ -9,4 +9,7 @@ class AuthRepository @Inject constructor(private val remote: AuthRemoteDataSourc
 
     fun signUp(token: String, name: String, email: String): Single<UserInfo> =
         remote.signUp(token, name, email)
+
+    fun signIn(): Single<UserInfo> =
+        remote.signIn()
 }

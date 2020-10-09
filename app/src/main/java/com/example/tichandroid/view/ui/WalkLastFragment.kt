@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.tichandroid.R
+import com.example.tichandroid.auth.AuthManager
 import com.example.tichandroid.viewmodel.WalkLastViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_walk_last.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class WalkLastFragment : Fragment() {
@@ -26,6 +28,9 @@ class WalkLastFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+
+    @Inject
+    lateinit var authManager: AuthManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,11 +51,16 @@ class WalkLastFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         googleLoginBtn.setOnClickListener {
-            onSignInButtonClick()
+            if (authManager.getToken().isNullOrBlank()) {
+                onSignUpButtonClick()
+            } else {
+                viewModel.signIn()
+                startTich()
+            }
         }
     }
 
-    private fun onSignInButtonClick() {
+    private fun onSignUpButtonClick() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
@@ -80,12 +90,17 @@ class WalkLastFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     auth.uid?.let { viewModel.signUp(it, name, email) }
-                    val intent = Intent(context, ShavingActivity::class.java)
-                    startActivity(intent)
+                    startTich()
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                 }
             }
+    }
+
+    private fun startTich() {
+        val intent = Intent(context, ShavingActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
     }
 
     companion object {
