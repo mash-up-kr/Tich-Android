@@ -7,7 +7,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object TichRetrofit {
-    const val baseUrl = "http://13.209.222.10:8080/api"
+    const val baseUrl = "http://13.209.222.10:8080/api/"
 
     fun <T> create(
         service: Class<T>,
