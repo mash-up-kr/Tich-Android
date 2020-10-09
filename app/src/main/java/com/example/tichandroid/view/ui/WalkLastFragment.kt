@@ -7,17 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.tichandroid.R
+import com.example.tichandroid.viewmodel.WalkLastViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_walk_last.*
 
-
+@AndroidEntryPoint
 class WalkLastFragment : Fragment() {
+
+    private val viewModel by viewModels<WalkLastViewModel>()
+
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
@@ -55,20 +61,27 @@ class WalkLastFragment : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                // TODO: account?.email, idToken, displayName 전달 필요
-                account?.idToken?.let { firebaseAuthWithGoogle(it) }
+                val idToken = account?.idToken
+                val name = account?.displayName
+                val email = account?.email
+
+                if (idToken != null && name != null && email != null) {
+                    firebaseAuthWithGoogle(idToken, name, email)
+                }
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
             }
         }
     }
 
-    private fun firebaseAuthWithGoogle(idToken: String) {
+    private fun firebaseAuthWithGoogle(idToken: String, name: String, email: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
+                    auth.uid?.let { viewModel.signUp(it, name, email) }
+                    val intent = Intent(context, ShavingActivity::class.java)
+                    startActivity(intent)
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                 }

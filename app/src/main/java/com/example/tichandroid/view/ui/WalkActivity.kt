@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.tichandroid.R
 import com.example.tichandroid.view.adapter.ViewPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_walk.*
 
+@AndroidEntryPoint
 class WalkActivity : AppCompatActivity() {
     private var currentViewPager = 0
 
