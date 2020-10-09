@@ -7,6 +7,6 @@ import retrofit2.http.*
 
 interface AuthService {
 
-    @POST("api/users/sign-up")
+    @POST("users/sign-up")
     fun signUp(@Body body: RequestBody): Single<UserInfo>
 }
