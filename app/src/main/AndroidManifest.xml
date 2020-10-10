@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_tich_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".view.ui.showcycle.ShowCycleActivity" />
         <activity android:name=".view.ui.ShavingActivity" />
         <activity android:name=".MainActivity" />

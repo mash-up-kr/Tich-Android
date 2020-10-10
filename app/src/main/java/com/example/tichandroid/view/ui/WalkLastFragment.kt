@@ -6,20 +6,31 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.tichandroid.R
+import com.example.tichandroid.auth.AuthManager
+import com.example.tichandroid.base.BaseViewModelFragment
+import com.example.tichandroid.viewmodel.WalkLastViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_walk_last.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
+class WalkLastFragment : BaseViewModelFragment() {
 
-class WalkLastFragment : Fragment() {
+    private val viewModel by viewModels<WalkLastViewModel>()
+
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+
+    @Inject
+    lateinit var authManager: AuthManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,14 +48,14 @@ class WalkLastFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onSetupViews(view: View) {
+        super.onSetupViews(view)
         googleLoginBtn.setOnClickListener {
-            onSignInButtonClick()
+            onSignUpButtonClick()
         }
     }
 
-    private fun onSignInButtonClick() {
+    private fun onSignUpButtonClick() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
@@ -55,24 +66,35 @@ class WalkLastFragment : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                // TODO: account?.email, idToken, displayName 전달 필요
-                account?.idToken?.let { firebaseAuthWithGoogle(it) }
+                val idToken = account?.idToken
+                val name = account?.displayName
+                val email = account?.email
+
+                if (idToken != null && name != null && email != null) {
+                    firebaseAuthWithGoogle(idToken, name, email)
+                }
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
             }
         }
     }
 
-    private fun firebaseAuthWithGoogle(idToken: String) {
+    private fun firebaseAuthWithGoogle(idToken: String, name: String, email: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
+                    auth.uid?.let { viewModel.signUpButtonClick(it, name, email) }
+                    startTich()
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                 }
             }
+    }
+
+    private fun startTich() {
+        startActivity(Intent(context, ShavingActivity::class.java))
+        requireActivity().finish()
     }
 
     companion object {

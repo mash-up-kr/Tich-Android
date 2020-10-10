@@ -14,7 +14,7 @@ class AuthorizationInterceptor @Inject constructor(
                 .newBuilder()
                 .apply {
                     authManager.getToken()?.let {
-                        header("authorization", it)
+                        header("TICH-TOKEN", it)
                     }
                 }
                 .build()
