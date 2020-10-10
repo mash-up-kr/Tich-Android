@@ -24,13 +24,12 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="17dp"
-        android:background="#EAE9E7"
+        android:background="@color/colorGray3"
         app:layout_constraintTop_toBottomOf="@id/firstTitle" />
-
 
     <TextView
         android:id="@+id/txt_main_text"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="26dp"
@@ -48,7 +47,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/title_border"
-        android:contentDescription="@string/StringValue"
+        android:contentDescription="@string/no_img"
         app:layout_constraintTop_toBottomOf="@id/txt_main_text" />
 
     <TextView
@@ -68,17 +67,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:background="@android:color/transparent"
-        android:hint="user name"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:textColorHint="#535251"
+        android:textColorHint="@color/colorGray4"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_name" />
 
     <Button
-        android:id="@+id/btn_continue"
+        android:id="@+id/btnContinue"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
@@ -86,7 +84,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_border"
         android:text="@string/main_continue"
-        android:textColor="#A2ABAD"
+        android:textColor="@color/colorCaption"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent" />

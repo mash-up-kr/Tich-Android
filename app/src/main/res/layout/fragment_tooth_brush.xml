@@ -14,16 +14,16 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:background="@color/colorBackground"
-            android:contentDescription="@string/StringValue"
+            android:contentDescription="@string/no_img"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/tooth_brush_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="26.17dp"
-            android:layout_marginTop="20.09dp"
-            android:contentDescription="@string/StringValue"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/no_img"
             android:src="@drawable/ic_arrow_left"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
             android:id="@+id/txt_tooth_brush"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="18dp"
             android:text="@string/tooth_brush"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
@@ -45,8 +45,8 @@
             android:id="@+id/img_select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:contentDescription="@string/StringValue"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/no_img"
             android:src="@drawable/ic_dropdown"
             app:layout_constraintStart_toEndOf="@id/txt_tooth_brush"
             app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +66,7 @@
             android:layout_marginTop="14dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/title_border"
-            android:contentDescription="@string/StringValue"
+            android:contentDescription="@string/no_img"
             app:layout_constraintTop_toBottomOf="@id/view" />
 
         <TextView
@@ -104,7 +104,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/title_border"
-            android:contentDescription="@string/StringValue"
+            android:contentDescription="@string/no_img"
             app:layout_constraintTop_toBottomOf="@id/imgTitle" />
 
         <TextView
@@ -135,8 +135,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
-            android:layout_marginEnd="39.5dp"
-            android:contentDescription="@string/StringValue"
+            android:layout_marginEnd="39dp"
+            android:contentDescription="@string/no_img"
             android:src="@drawable/ic_date_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgTitle" />
@@ -148,7 +148,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/title_border"
-            android:contentDescription="@string/StringValue"
+            android:contentDescription="@string/no_img"
             app:layout_constraintTop_toBottomOf="@id/imgStart" />
 
         <TextView
@@ -181,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
             android:layout_marginEnd="38dp"
-            android:contentDescription="@string/StringValue"
+            android:contentDescription="@string/no_img"
             android:src="@drawable/ic_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgStart" />

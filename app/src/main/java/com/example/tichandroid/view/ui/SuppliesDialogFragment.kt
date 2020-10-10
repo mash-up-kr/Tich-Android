@@ -22,40 +22,33 @@ class SuppliesDialogFragment(val itemClick: (Int) -> Unit) : BottomSheetDialogFr
         super.onViewCreated(view, savedInstanceState)
 
         img_choice_close.setOnClickListener {
-            removeFragment()
+            dismiss()
         }
 
         img_shaving_choice.setOnClickListener {
             itemClick(0)
-            removeFragment()
+            dismiss()
         }
 
         img_tooth_choice.setOnClickListener {
             itemClick(1)
-            removeFragment()
+            dismiss()
         }
         img_shower_choice.setOnClickListener {
             itemClick(2)
-            removeFragment()
+            dismiss()
         }
         img_dish_choice.setOnClickListener {
             itemClick(3)
-            removeFragment()
+            dismiss()
         }
         img_lens_choice.setOnClickListener {
             itemClick(4)
-            removeFragment()
+            dismiss()
         }
     }
 
     companion object {
         const val TAG = "BottomSheetFragment"
-    }
-
-    private fun removeFragment() {
-        activity?.supportFragmentManager
-            ?.beginTransaction()
-            ?.remove(this)
-            ?.commit()
     }
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.example.tichandroid.R
 import com.example.tichandroid.util.RxEventBus
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -14,10 +15,6 @@ import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
 
 
 class CycleDialogFragment : BottomSheetDialogFragment() {
-
-    companion object {
-        const val TAG = "CycleFragment"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,39 +35,33 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         }
 
         btnEveryDay.setOnClickListener {
-            clickEveryDay()
-            txt_above_thumb.visibility = View.GONE
+            handleEveryDayClick()
         }
 
         btnEveryWeek.setOnClickListener {
-            clickEveryWeek()
-            txt_above_thumb.visibility = View.GONE
+            handleEveryWeekClick()
         }
 
         btnEveryMonth.setOnClickListener {
-            clickEveryMonth()
-            txt_above_thumb.visibility = View.GONE
+            handleEveryMonthClick()
         }
 
         btnCycleConfirm.setOnClickListener {
 
-            if (seek_bar.progress == 0) {
+            if (seekBar.progress == 0) {
                 context?.showToast(R.string.empty_cycle)
 
             } else {
                 clickBtn()
 
-                RxEventBus.setCycle(txt_above_thumb.text.toString())
+                RxEventBus.setCycle(txtAboveThumb.text.toString())
 
-                activity?.supportFragmentManager
-                    ?.beginTransaction()
-                    ?.remove(this)
-                    ?.commit()
+                dismiss()
             }
         }
     }
 
-    private fun clickEveryDay() {
+    private fun handleEveryDayClick() {
         btnEveryDay.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
         btnEveryDay.setBackgroundResource(R.drawable.cycle_border_left_click)
         btnEveryWeek.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
@@ -78,20 +69,24 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         btnEveryMonth.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
         btnEveryMonth.setBackgroundResource(R.drawable.cycle_border_right)
 
-        txt_first_date.setText(R.string.day_min)
-        txt_last_date.setText(R.string.day_max)
+        txtFirstDate.setText(R.string.day_min)
+        txtLastDate.setText(R.string.day_max)
 
-        seek_bar.progress = 0
-        seek_bar.max = 31
+        txtAboveThumb.isVisible = false
 
-        seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekBar.progress = 0
+        seekBar.max = 31
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                txt_above_thumb.visibility = View.VISIBLE
+                txtAboveThumb.isVisible = true
                 val value = seekBar?.progress
-                txt_above_thumb.text = "${value}일"
+                txtAboveThumb.text = "${value}일"
 
                 if (value != 0) {
-                    txt_above_thumb.x = seekBar!!.thumb.bounds.left.toFloat()
+                    if (seekBar != null) {
+                        txtAboveThumb.x = seekBar.thumb.bounds.left.toFloat()
+                    }
                 }
             }
 
@@ -105,7 +100,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         })
     }
 
-    private fun clickEveryWeek() {
+    private fun handleEveryWeekClick() {
         btnEveryWeek.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
         btnEveryWeek.setBackgroundResource(R.drawable.cycle_border_center_click)
         btnEveryDay.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
@@ -113,20 +108,24 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         btnEveryMonth.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
         btnEveryMonth.setBackgroundResource(R.drawable.cycle_border_right)
 
-        txt_first_date.setText(R.string.week_min)
-        txt_last_date.setText(R.string.week_max)
+        txtFirstDate.setText(R.string.week_min)
+        txtLastDate.setText(R.string.week_max)
 
-        seek_bar.progress = 0
-        seek_bar.max = 8
+        txtAboveThumb.isVisible = false
 
-        seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekBar.progress = 0
+        seekBar.max = 8
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                txt_above_thumb.visibility = View.VISIBLE
+                txtAboveThumb.isVisible = true
                 val value = seekBar?.progress
-                txt_above_thumb.text = "${value}주"
+                txtAboveThumb.text = "${value}주"
 
                 if (value != 0) {
-                    txt_above_thumb.x = seekBar!!.thumb.bounds.left.toFloat()
+                    if (seekBar != null) {
+                        txtAboveThumb.x = seekBar.thumb.bounds.left.toFloat()
+                    }
                 }
             }
 
@@ -141,7 +140,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
 
     }
 
-    private fun clickEveryMonth() {
+    private fun handleEveryMonthClick() {
         btnEveryMonth.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
         btnEveryMonth.setBackgroundResource(R.drawable.cycle_border_right_click)
         btnEveryWeek.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
@@ -149,20 +148,24 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         btnEveryDay.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
         btnEveryDay.setBackgroundResource(R.drawable.cycle_border_left)
 
-        txt_first_date.setText(R.string.month_min)
-        txt_last_date.setText(R.string.month_max)
+        txtFirstDate.setText(R.string.month_min)
+        txtLastDate.setText(R.string.month_max)
 
-        seek_bar.progress = 0
-        seek_bar.max = 12
+        txtAboveThumb.isVisible = false
 
-        seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekBar.progress = 0
+        seekBar.max = 12
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                txt_above_thumb.visibility = View.VISIBLE
+                txtAboveThumb.isVisible = true
                 val value = seekBar?.progress
-                txt_above_thumb.text = "${value}달"
+                txtAboveThumb.text = "${value}달"
 
                 if (value != 0) {
-                    txt_above_thumb.x = seekBar!!.thumb.bounds.left.toFloat()
+                    if (seekBar != null) {
+                        txtAboveThumb.x = seekBar.thumb.bounds.left.toFloat()
+                    }
                 }
             }
 
@@ -181,5 +184,9 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
             setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
             setBackgroundResource(R.drawable.button_click_border)
         }
+    }
+
+    companion object {
+        const val TAG = "CycleFragment"
     }
 }

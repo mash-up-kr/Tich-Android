@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tich</string>
 
-    <string name="StringValue">이미지가 열리지 않습니다.</string>
+    <string name="no_img">이미지가 열리지 않습니다.</string>
     <!-- walkthrough -->
     <string name="walk_01_m">매일 우리 몸과</string>
     <string name="walk_01_s">맞닿는 생활용품</string>
@@ -48,7 +48,7 @@
     <string name="everyweek">매주</string>
     <string name="everymonth">매월</string>
     <string name="main_start">시작하기</string>
-    <string name="main_text">청결한 생활습관을 만들기 위해 필요한 기본정보를 입력해주세요.</string>
+    <string name="main_text">청결한 생활습관을 만들기 위해 필요한\n기본정보를 입력해주세요.</string>
     <string name="main_name">이름</string>
     <string name="main_continue">계속하기</string>
     <string name="main_title">다가오는 사이클을 확인하세요!</string>
