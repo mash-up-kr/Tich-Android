@@ -13,27 +13,25 @@ class WalkLastViewModel @ViewModelInject constructor(
     private val authManager: AuthManager
 ) : BaseViewModel(schedulerProvider) {
 
-    private val TAG = "WalkLastViewModel"
+    companion object {
+        private val TAG = "WalkLastViewModel"
+    }
 
     private val isInitialLoadingProcessor = BehaviorProcessor.createDefault(true)
 
-    fun signUp(
-        token: String,
-        name: String,
-        email: String
-    ) {
-        authRepository.signUp(token, name, email)
-            .doOnSubscribe { isInitialLoadingProcessor.offer(true) }
-            .doOnSuccess { isInitialLoadingProcessor.offer(false) }
-            .doOnSuccess { authManager.saveToken(it.token) }
-            .subscribe()
-    }
-
-    fun signIn() {
-        authRepository.signIn()
-            .doOnSubscribe { isInitialLoadingProcessor.offer(true) }
-            .doOnSuccess { isInitialLoadingProcessor.offer(false) }
-            .doOnSuccess { authManager.saveToken(it.token) }
-            .subscribe()
+    fun signUpButtonClick(token: String, name: String, email: String) {
+        if (authManager.getToken().isNullOrEmpty()) {
+            authRepository.signUp(token, name, email)
+                .doOnSubscribe { isInitialLoadingProcessor.offer(true) }
+                .doOnSuccess { isInitialLoadingProcessor.offer(false) }
+                .doOnSuccess { authManager.saveToken(it.token) }
+                .subscribe()
+        } else {
+            authRepository.signIn()
+                .doOnSubscribe { isInitialLoadingProcessor.offer(true) }
+                .doOnSuccess { isInitialLoadingProcessor.offer(false) }
+                .doOnSuccess { authManager.saveToken(it.token) }
+                .subscribe()
+        }
     }
 }

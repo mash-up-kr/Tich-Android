@@ -6,10 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.tichandroid.R
 import com.example.tichandroid.auth.AuthManager
+import com.example.tichandroid.base.BaseViewModelFragment
 import com.example.tichandroid.viewmodel.WalkLastViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_walk_last.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class WalkLastFragment : Fragment() {
+class WalkLastFragment : BaseViewModelFragment() {
 
     private val viewModel by viewModels<WalkLastViewModel>()
 
@@ -48,15 +48,10 @@ class WalkLastFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onSetupViews(view: View) {
+        super.onSetupViews(view)
         googleLoginBtn.setOnClickListener {
-            if (authManager.getToken().isNullOrBlank()) {
-                onSignUpButtonClick()
-            } else {
-                viewModel.signIn()
-                startTich()
-            }
+            onSignUpButtonClick()
         }
     }
 
@@ -89,7 +84,7 @@ class WalkLastFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    auth.uid?.let { viewModel.signUp(it, name, email) }
+                    auth.uid?.let { viewModel.signUpButtonClick(it, name, email) }
                     startTich()
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
@@ -98,9 +93,8 @@ class WalkLastFragment : Fragment() {
     }
 
     private fun startTich() {
-        val intent = Intent(context, ShavingActivity::class.java)
-        startActivity(intent)
-        activity?.finish()
+        startActivity(Intent(context, ShavingActivity::class.java))
+        requireActivity().finish()
     }
 
     companion object {
