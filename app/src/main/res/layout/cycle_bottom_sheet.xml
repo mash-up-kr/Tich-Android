@@ -9,7 +9,7 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <TextView
-        android:id="@+id/txt_cycle"
+        android:id="@+id/txtCycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_cycle_description"
+        android:id="@+id/txtCycleDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -31,7 +31,7 @@
         android:textColor="@color/colorGray4"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_cycle" />
+        app:layout_constraintTop_toBottomOf="@id/txtCycle" />
 
     <ImageView
         android:id="@+id/imgCycleClose"
@@ -39,19 +39,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="39.12dp"
         android:layout_marginEnd="23.62dp"
-        android:contentDescription="@string/StringValue"
+        android:contentDescription="@string/no_img"
         android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linear_layout"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:weightSum="0.9"
-        app:layout_constraintTop_toBottomOf="@id/txt_cycle_description">
+        app:layout_constraintTop_toBottomOf="@id/txtCycleDescription">
 
         <Button
             android:id="@+id/btnEveryDay"
@@ -59,9 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginTop="32dp"
-            android:layout_weight="0.3"
+            android:layout_weight="1"
             android:background="@drawable/cycle_border_left"
-            android:contentDescription="@string/StringValue"
+            android:contentDescription="@string/no_img"
             android:text="@string/everyday"
             android:textColor="@color/colorBlack" />
 
@@ -71,9 +70,9 @@
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginTop="32dp"
-            android:layout_weight="0.3"
+            android:layout_weight="1"
             android:background="@drawable/cycle_border_center"
-            android:contentDescription="@string/StringValue"
+            android:contentDescription="@string/no_img"
             android:text="@string/everyweek"
             android:textColor="@color/colorBlack" />
 
@@ -83,16 +82,16 @@
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginTop="32dp"
-            android:layout_weight="0.3"
+            android:layout_weight="1"
             android:background="@drawable/cycle_border_right"
-            android:contentDescription="@string/StringValue"
+            android:contentDescription="@string/no_img"
             android:text="@string/everymonth"
             android:textColor="@color/colorBlack" />
 
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatSeekBar
-        android:id="@+id/seek_bar"
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -100,21 +99,21 @@
         android:progressTint="@color/colorBlue"
         android:thumb="@drawable/custom_thumb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
     <TextView
-        android:id="@+id/txt_above_thumb"
+        android:id="@+id/txtAboveThumb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:textColor="@color/colorGray4"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/seek_bar"
+        app:layout_constraintBottom_toTopOf="@id/seekBar"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txt_first_date"
+        android:id="@+id/txtFirstDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -122,11 +121,11 @@
         android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"
         tools:text="1일" />
 
     <TextView
-        android:id="@+id/txt_last_date"
+        android:id="@+id/txtLastDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -134,7 +133,7 @@
         android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"
         tools:text="31일" />
 
 
@@ -152,23 +151,6 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar" />
-
-    <Button
-        android:id="@+id/btn_confirm_click"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="58dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_click_border"
-        android:text="@string/confirm"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar" />
+        app:layout_constraintTop_toBottomOf="@id/seekBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

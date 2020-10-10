@@ -15,11 +15,7 @@ import java.util.*
 
 class StartDateDialogFragment : BottomSheetDialogFragment() {
 
-    private lateinit var calendar: Calendar
-
-    companion object {
-        const val TAG = "StartDateFragment"
-    }
+    private val calendar = Calendar.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,8 +28,6 @@ class StartDateDialogFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        calendar = Calendar.getInstance()
-
         imgDateClose.setOnClickListener {
             activity?.supportFragmentManager
                 ?.beginTransaction()
@@ -41,12 +35,11 @@ class StartDateDialogFragment : BottomSheetDialogFragment() {
                 ?.commit()
         }
 
-
         btnDateConfirm.setOnClickListener {
             val selectedDate = formatDate(datePicker.year, datePicker.month, datePicker.dayOfMonth)
             RxEventBus.setDate(selectedDate)
 
-            clickBtn()
+            handleConfirmClick()
 
             activity?.supportFragmentManager
                 ?.beginTransaction()
@@ -60,14 +53,18 @@ class StartDateDialogFragment : BottomSheetDialogFragment() {
     private fun formatDate(year: Int, month: Int, day: Int): String {
         calendar.set(year, month, day)
         val chosenDate = calendar.time
-        val sdf = SimpleDateFormat("yyyy.MM.dd.(EE)")
-        return sdf.format(chosenDate)
+        val startDateFormat = SimpleDateFormat("yyyy.MM.dd.(EE)")
+        return startDateFormat.format(chosenDate)
     }
 
-    private fun clickBtn() {
+    private fun handleConfirmClick() {
         btnDateConfirm.apply {
             setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
             setBackgroundResource(R.drawable.button_click_border)
         }
+    }
+
+    companion object {
+        const val TAG = "StartDateFragment"
     }
 }

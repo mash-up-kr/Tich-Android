@@ -52,14 +52,6 @@ class ShavingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.onBackPressedDispatcher?.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    // block back button
-                }
-            })
-
         initNow()
 
         imgTitle.setOnClickListener {
@@ -164,7 +156,6 @@ class ShavingFragment : Fragment() {
         val currentDate = sdf.format(Date())
 
         txtDate.text = currentDate
-
     }
 
     private fun clickTitle() {
