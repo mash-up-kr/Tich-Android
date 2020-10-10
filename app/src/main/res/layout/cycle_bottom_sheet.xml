@@ -28,68 +28,90 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:text="@string/cycle_description"
-        android:textColor="#535251"
+        android:textColor="@color/colorGray4"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_cycle" />
 
     <ImageView
-        android:id="@+id/img_cycle_close"
+        android:id="@+id/imgCycleClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="39.12dp"
         android:layout_marginEnd="23.62dp"
         android:contentDescription="@string/StringValue"
-        android:src="@drawable/ic_baseline_close_24"
+        android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
-        android:id="@+id/btn_everyday"
-        android:layout_width="120dp"
-        android:layout_height="32dp"
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/cycle_border_left"
-        android:contentDescription="@string/StringValue"
-        android:text="@string/everyday"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_cycle_description" />
+        android:layout_marginEnd="20dp"
+        android:weightSum="0.9"
+        app:layout_constraintTop_toBottomOf="@id/txt_cycle_description">
 
+        <Button
+            android:id="@+id/btnEveryDay"
+            style="?attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="0.3"
+            android:background="@drawable/cycle_border_left"
+            android:contentDescription="@string/StringValue"
+            android:text="@string/everyday"
+            android:textColor="@color/colorBlack" />
 
-    <Button
-        android:id="@+id/btn_everyweek"
-        android:layout_width="120dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/cycle_border_center"
-        android:contentDescription="@string/StringValue"
-        android:text="@string/everyweek"
-        app:layout_constraintStart_toEndOf="@id/btn_everyday"
-        app:layout_constraintTop_toBottomOf="@id/txt_cycle_description" />
+        <Button
+            android:id="@+id/btnEveryWeek"
+            style="?attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="0.3"
+            android:background="@drawable/cycle_border_center"
+            android:contentDescription="@string/StringValue"
+            android:text="@string/everyweek"
+            android:textColor="@color/colorBlack" />
 
-    <Button
-        android:id="@+id/btn_everymonth"
-        android:layout_width="120dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/cycle_border_right"
-        android:contentDescription="@string/StringValue"
-        android:text="@string/everymonth"
-        app:layout_constraintStart_toEndOf="@id/btn_everyweek"
-        app:layout_constraintTop_toBottomOf="@id/txt_cycle_description" />
+        <Button
+            android:id="@+id/btnEveryMonth"
+            style="?attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="0.3"
+            android:background="@drawable/cycle_border_right"
+            android:contentDescription="@string/StringValue"
+            android:text="@string/everymonth"
+            android:textColor="@color/colorBlack" />
 
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/seek_bar"
         android:layout_width="match_parent"
-        android:layout_height="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="77dp"
-        android:progressDrawable="@drawable/custom_seekbar"
+        android:progressTint="@color/colorBlue"
         android:thumb="@drawable/custom_thumb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_everyday" />
+        app:layout_constraintTop_toBottomOf="@id/linear_layout" />
+
+    <TextView
+        android:id="@+id/txt_above_thumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/colorGray4"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/seek_bar"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txt_first_date"
@@ -97,6 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seek_bar"
@@ -108,6 +131,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
+        android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seek_bar"
@@ -115,7 +139,7 @@
 
 
     <Button
-        android:id="@+id/btn_confirm"
+        android:id="@+id/btnCycleConfirm"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
@@ -124,7 +148,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_border"
         android:text="@string/confirm"
-        android:textColor="#A2ABAD"
+        android:textColor="@color/colorCaption"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

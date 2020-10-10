@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="bottom"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <TextView
@@ -14,6 +12,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:text="@string/choice_supplies"
+        android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +25,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:text="@string/choice_description"
+        android:textColor="@color/colorBlack"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_choice_supplies" />
@@ -37,7 +37,7 @@
         android:layout_marginTop="39.12dp"
         android:layout_marginEnd="23.62dp"
         android:contentDescription="@string/StringValue"
-        android:src="@drawable/ic_baseline_close_24"
+        android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +48,7 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="37dp"
         android:contentDescription="@string/StringValue"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_shaving"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_choice_description" />
 
@@ -59,6 +59,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="44dp"
         android:text="@string/shaving"
+        android:textColor="@color/colorGray4"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/img_shaving"
@@ -70,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/shaving_description"
+        android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/img_shaving"
         app:layout_constraintTop_toBottomOf="@id/txt_shaving" />
@@ -82,7 +84,7 @@
         android:layout_marginEnd="26.17dp"
         android:layout_marginBottom="23.09dp"
         android:contentDescription="@string/StringValue"
-        android:src="@drawable/ic_baseline_chevron_right_24"
+        android:src="@drawable/ic_arrow_right"
         app:layout_constraintBottom_toTopOf="@id/shaving_line"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -103,7 +105,7 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="12dp"
         android:contentDescription="@string/StringValue"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_brushteeth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_shaving" />
 
@@ -114,6 +116,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:text="@string/tooth_brush"
+        android:textColor="@color/colorGray4"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/img_tooth_brush"
@@ -125,6 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/tooth_brush_description"
+        android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/img_tooth_brush"
         app:layout_constraintTop_toBottomOf="@id/txt_tooth_brush" />
@@ -137,7 +141,7 @@
         android:layout_marginEnd="26.17dp"
         android:layout_marginBottom="23.09dp"
         android:contentDescription="@string/StringValue"
-        android:src="@drawable/ic_baseline_chevron_right_24"
+        android:src="@drawable/ic_arrow_right"
         app:layout_constraintBottom_toTopOf="@id/tooth_brush_line"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -158,17 +162,18 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="12dp"
         android:contentDescription="@string/StringValue"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_towel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_tooth_brush" />
 
     <TextView
-        android:id="@+id/txt_shower_towl"
+        android:id="@+id/txt_shower_towel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:text="@string/shower_tower"
+        android:textColor="@color/colorGray4"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/img_shower_towel"
@@ -180,9 +185,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/shower_tower_description"
+        android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/img_shower_towel"
-        app:layout_constraintTop_toBottomOf="@id/txt_shower_towl" />
+        app:layout_constraintTop_toBottomOf="@id/txt_shower_towel" />
 
     <ImageView
         android:id="@+id/img_shower_choice"
@@ -192,7 +198,7 @@
         android:layout_marginEnd="26.17dp"
         android:layout_marginBottom="23.09dp"
         android:contentDescription="@string/StringValue"
-        android:src="@drawable/ic_baseline_chevron_right_24"
+        android:src="@drawable/ic_arrow_right"
         app:layout_constraintBottom_toTopOf="@id/shower_line"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -214,7 +220,7 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="12dp"
         android:contentDescription="@string/StringValue"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_dishcloth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_shower_towel" />
 
@@ -225,6 +231,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:text="@string/dish_cloth"
+        android:textColor="@color/colorGray4"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/img_shower_towel"
@@ -236,6 +243,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/dish_cloth_description"
+        android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/img_dish_cloth"
         app:layout_constraintTop_toBottomOf="@id/txt_dish_cloth" />
@@ -248,7 +256,7 @@
         android:layout_marginEnd="26.17dp"
         android:layout_marginBottom="23.09dp"
         android:contentDescription="@string/StringValue"
-        android:src="@drawable/ic_baseline_chevron_right_24"
+        android:src="@drawable/ic_arrow_right"
         app:layout_constraintBottom_toTopOf="@id/dish_cloth_line"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -270,7 +278,7 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="12dp"
         android:contentDescription="@string/StringValue"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_lens"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_dish_cloth" />
 
@@ -281,6 +289,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:text="@string/lens"
+        android:textColor="@color/colorGray4"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/img_lens"
@@ -292,6 +301,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/lens_description"
+        android:textColor="@color/colorGray5"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/img_lens"
         app:layout_constraintTop_toBottomOf="@id/txt_lens" />
@@ -304,7 +314,7 @@
         android:layout_marginEnd="26.17dp"
         android:layout_marginBottom="23.09dp"
         android:contentDescription="@string/StringValue"
-        android:src="@drawable/ic_baseline_chevron_right_24"
+        android:src="@drawable/ic_arrow_right"
         app:layout_constraintBottom_toTopOf="@id/lens_line"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -317,6 +327,11 @@
         android:background="#EAE9E7"
         app:layout_constraintStart_toEndOf="@id/img_lens"
         app:layout_constraintTop_toBottomOf="@id/txt_lens_description" />
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
