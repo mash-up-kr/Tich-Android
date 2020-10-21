@@ -7,12 +7,12 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.tichandroid.R
+import com.example.tichandroid.base.BaseViewModelFragment
 import com.example.tichandroid.util.RxEventBus
 import com.example.tichandroid.view.ui.CycleDialogFragment
 import com.example.tichandroid.view.ui.StartDateDialogFragment
@@ -20,17 +20,19 @@ import com.example.tichandroid.view.ui.SuppliesDialogFragment
 import com.example.tichandroid.view.ui.showcycle.ShowCycleActivity
 import com.example.tichandroid.viewmodel.ShavingViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.mashup.android.base.extension.rx.observeOnMain
+import com.mashup.android.base.extension.rx.subscribeWithErrorLogger
 import com.mashup.android.base.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_shaving.*
 import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
 import kotlinx.android.synthetic.main.date_bottom_sheet.*
+import kotlinx.android.synthetic.main.fragment_shaving.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
 @AndroidEntryPoint
-class ShavingFragment : Fragment() {
+class ItemFragment(private val layoutId: Int) : BaseViewModelFragment() {
 
     private val viewModel by viewModels<ShavingViewModel>()
 
@@ -46,11 +48,36 @@ class ShavingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_shaving, container, false)
+        return inflater.inflate(layoutId, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onBindViewModels() {
+        btnEnroll.setOnClickListener {
+            if (editTitle.text.isNullOrEmpty()) {
+                requireContext().showToast(R.string.empty_title)
+            } else {
+                clickBtn()
+
+                Handler().postDelayed(::originBtn, 1000)
+
+                viewModel.saveItem(
+                    txtItem.text.toString(),
+                    choiceValue,
+                    txtDate.text.toString(),
+                    editTitle.text.toString()
+                ).observeOnMain()
+                    .subscribeWithErrorLogger {
+                        val intent = Intent(requireContext(), ShowCycleActivity::class.java)
+                        startActivity(intent)
+                    }
+                    .addToDisposables()
+            }
+        }
+    }
+
+    override fun onSetupViews(view: View) {
+        dateSheetBehavior = BottomSheetBehavior.from(date_bottomSheet)
+        cycleSheetBehavior = BottomSheetBehavior.from(cycle_bottomSheet)
 
         initNow()
 
@@ -66,45 +93,19 @@ class ShavingFragment : Fragment() {
             clickPeriod()
         }
 
-        shaving_back.setOnClickListener {
+        imgBack.setOnClickListener {
             removeFragment()
 
-            val suppliesDialogFragment = SuppliesDialogFragment {
+            SuppliesDialogFragment {
                 when (it) {
-                    0 -> loadFragment(ShavingFragment())
-                    1 -> loadFragment(ToothBrushFragment())
-                    2 -> loadFragment(TowelFragment())
-                    3 -> loadFragment(DishClothFragment())
-                    4 -> loadFragment(LensFragment())
+                    0 -> loadFragment(ItemFragment(R.layout.fragment_shaving))
+                    1 -> loadFragment(ItemFragment(R.layout.fragment_tooth_brush))
+                    2 -> loadFragment(ItemFragment(R.layout.fragment_towel))
+                    3 -> loadFragment(ItemFragment(R.layout.fragment_dish_cloth))
+                    4 -> loadFragment(ItemFragment(R.layout.fragment_lens))
                 }
-            }
-            suppliesDialogFragment.show(
-                requireActivity().supportFragmentManager,
-                SuppliesDialogFragment.TAG
-            )
+            }.show(requireActivity().supportFragmentManager, SuppliesDialogFragment.TAG)
         }
-
-        btnEnroll.setOnClickListener {
-
-            if (editTitle.text.isNullOrEmpty()) {
-                requireContext().showToast(R.string.empty_title)
-            } else {
-                clickBtn()
-
-                Handler().postDelayed(::originBtn, 1000)
-
-                viewModel.saveItem(
-                    txtShaving.text.toString(),
-                    choiceValue,
-                    txtDate.text.toString(),
-                    editTitle.text.toString()
-                )
-
-                val intent = Intent(requireContext(), ShowCycleActivity::class.java)
-                startActivity(intent)
-            }
-        }
-
 
         imgCalender.setOnClickListener {
             clickStart()
@@ -123,9 +124,6 @@ class ShavingFragment : Fragment() {
                 CycleDialogFragment.TAG
             )
         }
-
-        dateSheetBehavior = BottomSheetBehavior.from(date_bottomSheet)
-        cycleSheetBehavior = BottomSheetBehavior.from(cycle_bottomSheet)
     }
 
     @SuppressLint("CheckResult")
