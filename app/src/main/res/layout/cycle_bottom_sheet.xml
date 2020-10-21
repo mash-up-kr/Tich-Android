@@ -5,7 +5,6 @@
     android:id="@+id/cycle_bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bottom_sheet_border"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <TextView
@@ -37,8 +36,8 @@
         android:id="@+id/imgCycleClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39.12dp"
-        android:layout_marginEnd="23.62dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="23dp"
         android:contentDescription="@string/no_img"
         android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,10 +45,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtCycleDescription">
 
         <Button
@@ -92,12 +93,13 @@
 
     <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/seekBar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="77dp"
         android:progressTint="@color/colorBlue"
         android:thumb="@drawable/custom_thumb"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
@@ -139,8 +141,8 @@
 
     <Button
         android:id="@+id/btnCycleConfirm"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="58dp"
         android:layout_marginEnd="20dp"
@@ -151,6 +153,8 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seekBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tichandroid.R
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.supplies_bottom_sheet.*
 
@@ -15,6 +16,10 @@ class SuppliesDialogFragment(val itemClick: (Int) -> Unit) : BottomSheetDialogFr
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (dialog as? BottomSheetDialog)?.behavior?.apply {
+            isFitToContents = true
+            setPeekHeight(1200)
+        }
         return inflater.inflate(R.layout.supplies_bottom_sheet, container, false)
     }
 

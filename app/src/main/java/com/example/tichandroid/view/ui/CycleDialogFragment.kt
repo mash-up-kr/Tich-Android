@@ -13,7 +13,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mashup.android.base.extension.showToast
 import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
 
-
 class CycleDialogFragment : BottomSheetDialogFragment() {
 
     override fun onCreateView(
@@ -72,8 +71,6 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         txtFirstDate.setText(R.string.day_min)
         txtLastDate.setText(R.string.day_max)
 
-        txtAboveThumb.isVisible = false
-
         seekBar.progress = 0
         seekBar.max = 31
 
@@ -81,7 +78,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 txtAboveThumb.isVisible = true
                 val value = seekBar?.progress
-                txtAboveThumb.text = "${value}일"
+                txtAboveThumb.text = value.toString().plus("일")
 
                 if (value != 0) {
                     if (seekBar != null) {
@@ -98,6 +95,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
 
             }
         })
+        txtAboveThumb.isVisible = false
     }
 
     private fun handleEveryWeekClick() {
@@ -111,8 +109,6 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         txtFirstDate.setText(R.string.week_min)
         txtLastDate.setText(R.string.week_max)
 
-        txtAboveThumb.isVisible = false
-
         seekBar.progress = 0
         seekBar.max = 8
 
@@ -120,7 +116,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 txtAboveThumb.isVisible = true
                 val value = seekBar?.progress
-                txtAboveThumb.text = "${value}주"
+                txtAboveThumb.text = value.toString().plus("주")
 
                 if (value != 0) {
                     if (seekBar != null) {
@@ -137,7 +133,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
 
             }
         })
-
+        txtAboveThumb.isVisible = false
     }
 
     private fun handleEveryMonthClick() {
@@ -151,8 +147,6 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         txtFirstDate.setText(R.string.month_min)
         txtLastDate.setText(R.string.month_max)
 
-        txtAboveThumb.isVisible = false
-
         seekBar.progress = 0
         seekBar.max = 12
 
@@ -160,7 +154,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 txtAboveThumb.isVisible = true
                 val value = seekBar?.progress
-                txtAboveThumb.text = "${value}달"
+                txtAboveThumb.text = value.toString().plus("달")
 
                 if (value != 0) {
                     if (seekBar != null) {
@@ -177,6 +171,7 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
 
             }
         })
+        txtAboveThumb.isVisible = false
     }
 
     private fun clickBtn() {

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -11,14 +10,16 @@
 
         <ImageView
             android:id="@+id/img_background"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="58dp"
             android:background="@color/colorBackground"
             android:contentDescription="@string/no_img"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/tooth_brush_back"
+            android:id="@+id/imgBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
@@ -29,10 +30,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_tooth_brush"
+            android:id="@+id/txtItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="17dp"
             android:text="@string/tooth_brush"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
@@ -45,28 +46,33 @@
             android:id="@+id/img_select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="18dp"
             android:contentDescription="@string/no_img"
             android:src="@drawable/ic_dropdown"
-            app:layout_constraintStart_toEndOf="@id/txt_tooth_brush"
+            app:layout_constraintStart_toEndOf="@id/txtItem"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/view"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="#EAE9E7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_background" />
 
         <ImageView
             android:id="@+id/imgTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/title_border"
             android:contentDescription="@string/no_img"
+            app:layout_constraintBottom_toTopOf="@id/imgStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view" />
 
         <TextView
@@ -74,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="30dp"
             android:text="@string/title"
             android:textColor="@color/colorGray5"
             android:textSize="12sp"
@@ -98,13 +104,15 @@
 
         <ImageView
             android:id="@+id/imgStart"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/title_border"
             android:contentDescription="@string/no_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgTitle" />
 
         <TextView
@@ -112,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:text="@string/start_date"
             android:textColor="@color/colorGray5"
             android:textSize="12sp"
@@ -143,12 +151,14 @@
 
         <ImageView
             android:id="@+id/imgPeriod"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/title_border"
             android:contentDescription="@string/no_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgStart" />
 
         <TextView
@@ -156,7 +166,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="12dp"
             android:text="@string/exchange_period"
             android:textColor="@color/colorGray5"
             android:textSize="12sp"
@@ -188,8 +198,8 @@
 
         <Button
             android:id="@+id/btnEnroll"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
@@ -198,7 +208,9 @@
             android:textColor="#A2ABAD"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

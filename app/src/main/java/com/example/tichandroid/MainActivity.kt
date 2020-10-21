@@ -1,6 +1,5 @@
 package com.example.tichandroid
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // TODO : userName
+
         btnContinue.setOnClickListener { handleClickContinue() }
     }
 
@@ -30,7 +31,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleClickContinue() {
-
         btnContinue.apply {
             setBackgroundResource(R.drawable.button_click_border)
             setTextColor(ContextCompat.getColor(this@MainActivity, R.color.colorWhite))
@@ -39,11 +39,11 @@ class MainActivity : AppCompatActivity() {
 
         SuppliesDialogFragment {
             when (it) {
-                0 -> loadFragment(ShavingFragment())
-                1 -> loadFragment(ToothBrushFragment())
-                2 -> loadFragment(TowelFragment())
-                3 -> loadFragment(DishClothFragment())
-                4 -> loadFragment(LensFragment())
+                0 -> loadFragment(ItemFragment(R.layout.fragment_shaving))
+                1 -> loadFragment(ItemFragment(R.layout.fragment_tooth_brush))
+                2 -> loadFragment(ItemFragment(R.layout.fragment_towel))
+                3 -> loadFragment(ItemFragment(R.layout.fragment_dish_cloth))
+                4 -> loadFragment(ItemFragment(R.layout.fragment_lens))
             }
         }.show(supportFragmentManager, SuppliesDialogFragment.TAG)
     }
