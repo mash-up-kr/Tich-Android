@@ -11,7 +11,6 @@ class ShavingViewModel @ViewModelInject constructor(
     private val itemRepository: ItemRepository
 ) : BaseViewModel(schedulerProvider) {
 
-    private val isEmptyProcessor = BehaviorProcessor.createDefault(false)
     private val isInitialLoadingProcessor = BehaviorProcessor.createDefault(true)
 
     fun saveItem(
@@ -22,6 +21,5 @@ class ShavingViewModel @ViewModelInject constructor(
     ) = itemRepository.saveItem(category, cycle, startDate, title)
         .doOnSubscribe { isInitialLoadingProcessor.offer(true) }
         .doOnSuccess { isInitialLoadingProcessor.offer(false) }
-        .doOnSuccess { isEmptyProcessor.offer(false) }
         .subscribeOnIO()
 }

@@ -1,7 +1,7 @@
 package com.example.tichandroid.util
 
 import android.annotation.SuppressLint
-import kotlinx.android.synthetic.main.fragment_shaving.*
+import kotlinx.android.synthetic.main.fragment_item.*
 import java.text.SimpleDateFormat
 import java.util.*
 
