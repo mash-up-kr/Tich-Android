@@ -93,7 +93,7 @@ class WalkLastFragment : BaseViewModelFragment() {
     }
 
     private fun startTich() {
-        startActivity(Intent(context, ShavingActivity::class.java))
+        //startActivity(Intent(context, ShavingActivity::class.java))
         requireActivity().finish()
     }
 
