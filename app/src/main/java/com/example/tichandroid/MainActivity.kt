@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import com.example.tichandroid.view.ui.SuppliesDialogFragment
 import com.example.tichandroid.view.ui.items.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,21 +37,22 @@ class MainActivity : AppCompatActivity() {
 
         SuppliesDialogFragment {
             when (it) {
-                0 -> loadFragment(ItemFragment(R.layout.fragment_shaving))
-                1 -> loadFragment(ItemFragment(R.layout.fragment_tooth_brush))
-                2 -> loadFragment(ItemFragment(R.layout.fragment_towel))
-                3 -> loadFragment(ItemFragment(R.layout.fragment_dish_cloth))
-                4 -> loadFragment(ItemFragment(R.layout.fragment_lens))
+                0 -> getString(R.string.shaving).loadFragment()
+                1 -> getString(R.string.tooth_brush).loadFragment()
+                2 -> getString(R.string.shower_tower).loadFragment()
+                3 -> getString(R.string.dish_cloth).loadFragment()
+                4 -> getString(R.string.lens).loadFragment()
             }
         }.show(supportFragmentManager, SuppliesDialogFragment.TAG)
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        supportFragmentManager.commit {
-            transaction.replace(R.id.fragment_items, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+    private fun String.loadFragment() {
+        supportFragmentManager.beginTransaction().replace(
+            R.id.fragment_items, ItemFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ItemFragment.itemName, this@loadFragment)
+                }
+            }
+        ).addToBackStack(null).commit()
     }
 }
