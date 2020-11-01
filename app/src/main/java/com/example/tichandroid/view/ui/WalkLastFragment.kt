@@ -55,8 +55,7 @@ class WalkLastFragment : BaseViewModelFragment() {
         return view
     }
 
-    override fun onSetupViews(view: View) {
-        super.onSetupViews(view)
+    override fun onSetupViews() {
         googleLoginBtn.setOnClickListener {
             onSignUpButtonClick()
         }

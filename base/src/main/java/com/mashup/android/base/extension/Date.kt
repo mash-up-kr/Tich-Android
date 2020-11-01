@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
-// Date Format : "yyyy-mm-dd"
 @SuppressLint("SimpleDateFormat")
 fun calculateDueDateFromToday(scheduledDate: String): Int {
     val format = SimpleDateFormat("dd").format(Date())

@@ -1,12 +1,15 @@
 package com.example.tichandroid
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextWatcher
 import androidx.activity.viewModels
+import androidx.core.app.NotificationCompat
 import androidx.core.widget.doOnTextChanged
 import com.example.tichandroid.auth.AuthManager
 import com.example.tichandroid.base.BaseActivity
+import com.example.tichandroid.fcm.NotificationsViewModel
 import com.example.tichandroid.view.ui.WalkActivity
 import com.example.tichandroid.view.ui.showcycle.ShowCycleActivity
 import com.example.tichandroid.viewmodel.MainViewModel
@@ -21,6 +24,7 @@ import javax.inject.Inject
 class MainActivity : BaseActivity() {
 
     private val viewModel: MainViewModel by viewModels()
+    private val notificationViewModel: NotificationsViewModel by viewModels()
 
     private var textWatcher: TextWatcher? = null
 
@@ -34,6 +38,7 @@ class MainActivity : BaseActivity() {
 
         checkSignedIn()
         checkJoinedIn()
+        registerDeviceToken()
         setContentView(R.layout.activity_main)
         onSetUpViews()
         onBindViewModels()
@@ -84,6 +89,13 @@ class MainActivity : BaseActivity() {
             startActivity(Intent(this, ShowCycleActivity::class.java))
             finish()
         }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun registerDeviceToken() {
+        notificationViewModel.sendFCMTokenToServer()
+            .observeOnMain()
+            .subscribeWithErrorLogger()
     }
 
     companion object {

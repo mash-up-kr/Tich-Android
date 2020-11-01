@@ -18,4 +18,8 @@ class AuthRemoteDataSource @Inject constructor(private val service: AuthService)
     })
 
     fun signIn(): Single<UserInfo> = service.signIn()
+
+    fun saveDevice(deviceToken: String): Single<String> = service.saveDevice(requestBodyOf {
+        "token" to deviceToken
+    })
 }

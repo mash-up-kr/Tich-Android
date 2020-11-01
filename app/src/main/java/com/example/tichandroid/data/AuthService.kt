@@ -13,4 +13,7 @@ interface AuthService {
 
     @POST("users/sign-in")
     fun signIn(): Single<UserInfo>
+
+    @POST("devices")
+    fun saveDevice(@Body body: RequestBody): Single<String>
 }

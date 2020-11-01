@@ -15,11 +15,11 @@ abstract class BaseViewModelFragment : Fragment() {
     @CallSuper
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onSetupViews(view)
+        onSetupViews()
         onBindViewModels()
     }
 
-    open fun onSetupViews(view: View) {}
+    open fun onSetupViews() {}
 
     open fun onBindViewModels() {}
 
