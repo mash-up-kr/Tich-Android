@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tichandroid.R
+import com.mashup.android.base.extension.inflate
 
 class WalkThirdFragment : Fragment() {
 
@@ -13,7 +14,5 @@ class WalkThirdFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_walk_third, container, false)
-    }
+    ): View? = container?.inflate(R.layout.fragment_walk_third)
 }

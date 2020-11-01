@@ -9,6 +9,7 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
+import javax.inject.Inject
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToLong

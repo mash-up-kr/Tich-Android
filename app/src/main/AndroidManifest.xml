@@ -14,14 +14,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".view.ui.showcycle.ShowCycleActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".view.ui.WalkActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.ui.WalkActivity" />
     </application>
 
 </manifest>

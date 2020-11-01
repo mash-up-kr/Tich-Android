@@ -1,58 +1,92 @@
 package com.example.tichandroid
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.example.tichandroid.view.ui.SuppliesDialogFragment
-import com.example.tichandroid.view.ui.items.*
+import android.text.TextWatcher
+import androidx.activity.viewModels
+import androidx.core.widget.doOnTextChanged
+import com.example.tichandroid.auth.AuthManager
+import com.example.tichandroid.base.BaseActivity
+import com.example.tichandroid.view.ui.WalkActivity
+import com.example.tichandroid.view.ui.showcycle.ShowCycleActivity
+import com.example.tichandroid.viewmodel.MainViewModel
+import com.mashup.android.base.extension.rx.observeOnMain
+import com.mashup.android.base.extension.rx.subscribeWithErrorLogger
+import com.mashup.android.base.extension.showSoftInput
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+    private val viewModel: MainViewModel by viewModels()
+
+    private var textWatcher: TextWatcher? = null
+
+    @Inject
+    lateinit var authManager: AuthManager
+
+    private val userName: String by lazy { intent.getStringExtra(KEY_USER_NAME) ?: "" }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        checkSignedIn()
+        checkJoinedIn()
         setContentView(R.layout.activity_main)
+        onSetUpViews()
+        onBindViewModels()
+    }
 
-        // TODO : userName
-
+    private fun onSetUpViews() {
+        setUpInput()
         btnContinue.setOnClickListener { handleClickContinue() }
     }
 
-    private fun originBtn() {
-        btnContinue.apply {
-            setTextColor(ContextCompat.getColor(baseContext, R.color.colorCaption))
-            setBackgroundResource(R.drawable.button_border)
+    private fun onBindViewModels() {
+        viewModel.name
+            .observeOnMain()
+            .subscribeWithErrorLogger {
+                btnContinue?.isEnabled = !it.isNullOrBlank()
+            }
+            .addToDisposables()
+    }
+
+    private fun setUpInput() {
+        mainName.showSoftInput()
+        mainName.setText(userName)
+        textWatcher = mainName.doOnTextChanged { text, _, _, _ ->
+            viewModel.setName(text?.toString())
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainName.removeTextChangedListener(textWatcher)
     }
 
     private fun handleClickContinue() {
-        btnContinue.apply {
-            setBackgroundResource(R.drawable.button_click_border)
-            setTextColor(ContextCompat.getColor(this@MainActivity, R.color.colorWhite))
-        }
-        Handler().postDelayed(::originBtn, 1000)
-
-        SuppliesDialogFragment {
-            when (it) {
-                0 -> getString(R.string.shaving).loadFragment()
-                1 -> getString(R.string.tooth_brush).loadFragment()
-                2 -> getString(R.string.shower_tower).loadFragment()
-                3 -> getString(R.string.dish_cloth).loadFragment()
-                4 -> getString(R.string.lens).loadFragment()
-            }
-        }.show(supportFragmentManager, SuppliesDialogFragment.TAG)
+        authManager.saveUserName(mainName.text.toString())
+        startActivity(Intent(this, ShowCycleActivity::class.java))
+        finish()
     }
 
-    private fun String.loadFragment() {
-        supportFragmentManager.beginTransaction().replace(
-            R.id.fragment_items, ItemFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ItemFragment.itemName, this@loadFragment)
-                }
-            }
-        ).addToBackStack(null).commit()
+    private fun checkSignedIn() {
+        if (authManager.getToken() == null) {
+            startActivity(Intent(this, WalkActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun checkJoinedIn() {
+        if (authManager.getUserName() != null) {
+            startActivity(Intent(this, ShowCycleActivity::class.java))
+            finish()
+        }
+    }
+
+    companion object {
+        const val KEY_USER_NAME = "user_name"
     }
 }

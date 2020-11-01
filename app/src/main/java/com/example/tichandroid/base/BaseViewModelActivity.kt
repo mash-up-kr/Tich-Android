@@ -1,6 +1,5 @@
 package com.example.tichandroid.base
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -16,15 +15,4 @@ abstract class BaseViewModelActivity : AppCompatActivity() {
     }
 
     protected fun Disposable.addToDisposables(): Disposable = addTo(disposables)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        onSetUpViews()
-        onBindViewModels()
-    }
-
-    abstract fun onBindViewModels()
-
-    abstract fun onSetUpViews()
 }

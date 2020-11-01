@@ -11,4 +11,5 @@ class AuthRepository @Inject constructor(private val remote: AuthRemoteDataSourc
         remote.signUp(token, name, email)
 
     fun signIn(): Single<UserInfo> = remote.signIn()
+        .doOnSuccess {  }
 }

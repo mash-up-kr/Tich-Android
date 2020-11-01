@@ -13,8 +13,13 @@ class AuthManager(context: Context) {
 
     fun saveToken(token: String) = prefs.edit { putString(ME_AUTH_TOKEN, token) }
 
+    fun saveUserName(userName: String) = prefs.edit { putString(AUTH_USERNAME, userName) }
+
+    fun getUserName(): String? = prefs.getString(AUTH_USERNAME, null)
+
     companion object {
         private const val AUTH_STATE = "auth_states"
         private const val ME_AUTH_TOKEN = "auth_token"
+        private const val AUTH_USERNAME = "auth_user_name"
     }
 }

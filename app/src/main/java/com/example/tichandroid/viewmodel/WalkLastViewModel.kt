@@ -5,6 +5,7 @@ import com.example.tichandroid.auth.AuthManager
 import com.example.tichandroid.base.BaseViewModel
 import com.example.tichandroid.data.repository.AuthRepository
 import com.example.tichandroid.reactivex.scheduler.BaseSchedulerProvider
+import io.reactivex.Single
 import io.reactivex.processors.BehaviorProcessor
 
 class WalkLastViewModel @ViewModelInject constructor(
@@ -19,19 +20,21 @@ class WalkLastViewModel @ViewModelInject constructor(
 
     private val isInitialLoadingProcessor = BehaviorProcessor.createDefault(true)
 
-    fun signUpButtonClick(token: String, name: String, email: String) {
-        if (authManager.getToken().isNullOrEmpty()) {
+    fun signUpButtonClick(token: String, name: String, email: String): Single<String> {
+        return if (authManager.getToken().isNullOrEmpty()) {
             authRepository.signUp(token, name, email)
                 .doOnSubscribe { isInitialLoadingProcessor.offer(true) }
                 .doOnSuccess { isInitialLoadingProcessor.offer(false) }
                 .doOnSuccess { authManager.saveToken(it.token) }
-                .subscribe()
+                .map { it.name }
+                .subscribeOnIO()
         } else {
             authRepository.signIn()
                 .doOnSubscribe { isInitialLoadingProcessor.offer(true) }
                 .doOnSuccess { isInitialLoadingProcessor.offer(false) }
                 .doOnSuccess { authManager.saveToken(it.token) }
-                .subscribe()
+                .map { it.name }
+                .subscribeOnIO()
         }
     }
 }

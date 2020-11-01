@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.example.tichandroid.R
-import com.example.tichandroid.base.BaseViewModelActivity
+import com.example.tichandroid.base.BaseActivity
 import com.mashup.android.base.extension.rx.observeOnMain
 import com.mashup.android.base.extension.rx.subscribeWithErrorLogger
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_show_cycle.*
 
 @AndroidEntryPoint
-class ShowCycleActivity : BaseViewModelActivity() {
+class ShowCycleActivity : BaseActivity() {
 
     private val viewModel by viewModels<ShowCycleViewModel>()
 
@@ -20,10 +20,12 @@ class ShowCycleActivity : BaseViewModelActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_cycle)
-        //adapter = ShowCycleAdapter()
+
+        onSetUpViews()
+        onBindViewModels()
     }
 
-    override fun onBindViewModels() {
+    private fun onBindViewModels() {
         viewModel.isEmpty
             .observeOnMain()
             .subscribeWithErrorLogger {
@@ -48,7 +50,7 @@ class ShowCycleActivity : BaseViewModelActivity() {
             .addToDisposables()
     }
 
-    override fun onSetUpViews() {
+    private fun onSetUpViews() {
         showCycleRecycler.adapter = adapter
     }
 }

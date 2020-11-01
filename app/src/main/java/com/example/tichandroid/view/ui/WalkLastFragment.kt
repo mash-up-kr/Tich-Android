@@ -6,7 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import com.example.tichandroid.MainActivity
+import com.example.tichandroid.MainActivity.Companion.KEY_USER_NAME
 import com.example.tichandroid.R
 import com.example.tichandroid.auth.AuthManager
 import com.example.tichandroid.base.BaseViewModelFragment
@@ -15,8 +18,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.mashup.android.base.extension.rx.observeOnMain
+import com.mashup.android.base.extension.rx.subscribeWithErrorLogger
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_walk_last.*
 import javax.inject.Inject
@@ -83,18 +90,32 @@ class WalkLastFragment : BaseViewModelFragment() {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    auth.uid?.let { viewModel.signUpButtonClick(it, name, email) }
-                    startTich()
-                } else {
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-                }
+                handleTaskComplete(task, name, email)
             }
     }
 
-    private fun startTich() {
-        //startActivity(Intent(context, ShavingActivity::class.java))
-        requireActivity().finish()
+    private fun handleTaskComplete(task: Task<AuthResult>, name: String, email: String) {
+        if (task.isSuccessful) {
+            auth.uid?.let {
+                viewModel.signUpButtonClick(it, name, email)
+                    .observeOnMain()
+                    .subscribeWithErrorLogger { userName ->
+                        startTich(userName)
+                    }
+                    .addToDisposables()
+            }
+        } else {
+            Log.w(TAG, "signInWithCredential:failure", task.exception)
+        }
+    }
+
+    private fun startTich(userName: String) {
+        Intent(context, MainActivity::class.java).apply {
+            arguments = bundleOf(
+                KEY_USER_NAME to userName
+            )
+        }
+        startActivity(Intent(context, MainActivity::class.java))
     }
 
     companion object {
