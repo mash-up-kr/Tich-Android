@@ -13,7 +13,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mashup.android.base.extension.showToast
 import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
 
-
 class CycleDialogFragment : BottomSheetDialogFragment() {
 
     override fun onCreateView(
@@ -46,6 +45,33 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
             handleEveryMonthClick()
         }
 
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                txtAboveThumb.isVisible = true
+                val value = seekBar?.progress
+
+                when (seekBar?.max) {
+                    31 -> txtAboveThumb.text = "${value}일"
+                    8 -> txtAboveThumb.text = "${value}주"
+                    12 -> txtAboveThumb.text = "${value}달"
+                }
+
+                if (value != 0) {
+                    if (seekBar != null) {
+                        txtAboveThumb.x = seekBar.thumb.bounds.left.toFloat()
+                    }
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+        })
+
         btnCycleConfirm.setOnClickListener {
 
             if (seekBar.progress == 0) {
@@ -72,32 +98,10 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         txtFirstDate.setText(R.string.day_min)
         txtLastDate.setText(R.string.day_max)
 
-        txtAboveThumb.isVisible = false
-
         seekBar.progress = 0
         seekBar.max = 31
 
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                txtAboveThumb.isVisible = true
-                val value = seekBar?.progress
-                txtAboveThumb.text = "${value}일"
-
-                if (value != 0) {
-                    if (seekBar != null) {
-                        txtAboveThumb.x = seekBar.thumb.bounds.left.toFloat()
-                    }
-                }
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-            }
-        })
+        txtAboveThumb.isVisible = false
     }
 
     private fun handleEveryWeekClick() {
@@ -111,33 +115,10 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         txtFirstDate.setText(R.string.week_min)
         txtLastDate.setText(R.string.week_max)
 
-        txtAboveThumb.isVisible = false
-
         seekBar.progress = 0
         seekBar.max = 8
 
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                txtAboveThumb.isVisible = true
-                val value = seekBar?.progress
-                txtAboveThumb.text = "${value}주"
-
-                if (value != 0) {
-                    if (seekBar != null) {
-                        txtAboveThumb.x = seekBar.thumb.bounds.left.toFloat()
-                    }
-                }
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-            }
-        })
-
+        txtAboveThumb.isVisible = false
     }
 
     private fun handleEveryMonthClick() {
@@ -151,32 +132,10 @@ class CycleDialogFragment : BottomSheetDialogFragment() {
         txtFirstDate.setText(R.string.month_min)
         txtLastDate.setText(R.string.month_max)
 
-        txtAboveThumb.isVisible = false
-
         seekBar.progress = 0
         seekBar.max = 12
 
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                txtAboveThumb.isVisible = true
-                val value = seekBar?.progress
-                txtAboveThumb.text = "${value}달"
-
-                if (value != 0) {
-                    if (seekBar != null) {
-                        txtAboveThumb.x = seekBar.thumb.bounds.left.toFloat()
-                    }
-                }
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-            }
-        })
+        txtAboveThumb.isVisible = false
     }
 
     private fun clickBtn() {

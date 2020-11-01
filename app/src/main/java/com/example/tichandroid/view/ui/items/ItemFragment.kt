@@ -7,12 +7,11 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.tichandroid.R
+import com.example.tichandroid.base.BaseViewModelFragment
 import com.example.tichandroid.util.RxEventBus
 import com.example.tichandroid.view.ui.CycleDialogFragment
 import com.example.tichandroid.view.ui.StartDateDialogFragment
@@ -20,17 +19,20 @@ import com.example.tichandroid.view.ui.SuppliesDialogFragment
 import com.example.tichandroid.view.ui.showcycle.ShowCycleActivity
 import com.example.tichandroid.viewmodel.ShavingViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.mashup.android.base.extension.inflate
+import com.mashup.android.base.extension.rx.observeOnMain
+import com.mashup.android.base.extension.rx.subscribeWithErrorLogger
 import com.mashup.android.base.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_shaving.*
 import kotlinx.android.synthetic.main.cycle_bottom_sheet.*
 import kotlinx.android.synthetic.main.date_bottom_sheet.*
+import kotlinx.android.synthetic.main.fragment_item.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
 @AndroidEntryPoint
-class ShavingFragment : Fragment() {
+class ItemFragment : BaseViewModelFragment() {
 
     private val viewModel by viewModels<ShavingViewModel>()
 
@@ -46,11 +48,15 @@ class ShavingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_shaving, container, false)
+        return container?.inflate(R.layout.fragment_item)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onSetupViews(view: View) {
+
+        txtItem.text = arguments?.getString(itemName)
+
+        dateSheetBehavior = BottomSheetBehavior.from(date_bottomSheet)
+        cycleSheetBehavior = BottomSheetBehavior.from(cycle_bottomSheet)
 
         initNow()
 
@@ -66,45 +72,19 @@ class ShavingFragment : Fragment() {
             clickPeriod()
         }
 
-        shaving_back.setOnClickListener {
+        imgBack.setOnClickListener {
             removeFragment()
 
-            val suppliesDialogFragment = SuppliesDialogFragment {
+            SuppliesDialogFragment {
                 when (it) {
-                    0 -> loadFragment(ShavingFragment())
-                    1 -> loadFragment(ToothBrushFragment())
-                    2 -> loadFragment(TowelFragment())
-                    3 -> loadFragment(DishClothFragment())
-                    4 -> loadFragment(LensFragment())
+                    0 -> getString(R.string.shaving).loadFragment()
+                    1 -> getString(R.string.tooth_brush).loadFragment()
+                    2 -> getString(R.string.shower_tower).loadFragment()
+                    3 -> getString(R.string.dish_cloth).loadFragment()
+                    4 -> getString(R.string.lens).loadFragment()
                 }
-            }
-            suppliesDialogFragment.show(
-                requireActivity().supportFragmentManager,
-                SuppliesDialogFragment.TAG
-            )
+            }.show(requireActivity().supportFragmentManager, SuppliesDialogFragment.TAG)
         }
-
-        btnEnroll.setOnClickListener {
-
-            if (editTitle.text.isNullOrEmpty()) {
-                requireContext().showToast(R.string.empty_title)
-            } else {
-                clickBtn()
-
-                Handler().postDelayed(::originBtn, 1000)
-
-                viewModel.saveItem(
-                    txtShaving.text.toString(),
-                    choiceValue,
-                    txtDate.text.toString(),
-                    editTitle.text.toString()
-                )
-
-                val intent = Intent(requireContext(), ShowCycleActivity::class.java)
-                startActivity(intent)
-            }
-        }
-
 
         imgCalender.setOnClickListener {
             clickStart()
@@ -124,8 +104,33 @@ class ShavingFragment : Fragment() {
             )
         }
 
-        dateSheetBehavior = BottomSheetBehavior.from(date_bottomSheet)
-        cycleSheetBehavior = BottomSheetBehavior.from(cycle_bottomSheet)
+        btnEnroll.setOnClickListener {
+            when {
+                editTitle.text.isNullOrEmpty() -> {
+                    requireContext().showToast(R.string.empty_title)
+                }
+                txtChoice.text == getString(R.string.exchange_period_hint) -> {
+                    requireContext().showToast(R.string.empty_cycle)
+                }
+                else -> {
+                    clickBtn()
+
+                    Handler().postDelayed(::originBtn, 1000)
+
+                    viewModel.saveItem(
+                        txtItem.text.toString(),
+                        choiceValue,
+                        txtDate.text.toString(),
+                        editTitle.text.toString()
+                    ).observeOnMain()
+                        .subscribeWithErrorLogger {
+                            val intent = Intent(requireContext(), ShowCycleActivity::class.java)
+                            startActivity(intent)
+                        }
+                        .addToDisposables()
+                }
+            }
+        }
     }
 
     @SuppressLint("CheckResult")
@@ -217,10 +222,17 @@ class ShavingFragment : Fragment() {
             ?.commit()
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_items, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+    private fun String.loadFragment() {
+        requireActivity().supportFragmentManager.beginTransaction().replace(
+            R.id.fragment_items, ItemFragment().apply {
+                arguments = Bundle().apply {
+                    putString(itemName, this@loadFragment)
+                }
+            }
+        ).addToBackStack(null).commit()
+    }
+
+    companion object {
+        const val itemName = "item"
     }
 }

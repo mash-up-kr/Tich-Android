@@ -23,7 +23,6 @@
     </style>
 
     <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
-        <item name="behavior_peekHeight">@dimen/bottom_sheet_peek_height</item>
         <item name="android:background">@drawable/bottom_sheet_border</item>
     </style>
 
@@ -35,7 +34,7 @@
     </style>
 
     <!--Date Picker divider-->
-    <style name="AppTheme.DatePicker" parent="AppTheme">
+    <style name="AppTheme.DatePicker" parent="android:Widget.Material.Light.DatePicker">
         <item name="colorControlNormal">@color/colorBlue</item>
         <item name="android:textColorPrimary">@color/colorBlack</item>
     </style>
