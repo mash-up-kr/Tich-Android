@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_show_cycle.*
 
 @AndroidEntryPoint
-class ShowCycleActivity : BaseActivity() {
+class ShowCycleActivity : BaseActivity(), ShowCycleAdapter.OnClickListener {
 
     private val viewModel by viewModels<ShowCycleViewModel>()
 
@@ -20,9 +20,14 @@ class ShowCycleActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_cycle)
+        adapter = ShowCycleAdapter(this)
 
         onSetUpViews()
         onBindViewModels()
+    }
+
+    private fun onSetUpViews() {
+        showCycleRecycler.adapter = adapter
     }
 
     private fun onBindViewModels() {
@@ -50,7 +55,19 @@ class ShowCycleActivity : BaseActivity() {
             .addToDisposables()
     }
 
-    private fun onSetUpViews() {
-        showCycleRecycler.adapter = adapter
+    override fun onHeaderSettingClick() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onBannerNextClick() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onBannerSkipClick() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onItemNextClick(itemId: Int) {
+        // Item에 맞는 Fragment로 이동
     }
 }

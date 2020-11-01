@@ -66,4 +66,7 @@
     <string name="month_min">1달</string>
     <string name="month_max">12달</string>
 
+    <string name="show_cycle_today_changed">오늘은 %s을(를) 교체해야 하는 날이에요!</string>
+    <string name="show_cycle_soon_changed">교체시기가 다가오고 있어요.</string>
+    <string name="show_cycle_no_changed">다가오는 tich를 확인하세요!</string>
 </resources>

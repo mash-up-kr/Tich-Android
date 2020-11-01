@@ -63,7 +63,7 @@ class ShowCycleAdapter(
     private fun HeaderViewHolder.bind(item: ShowCycleAdapterItem.Header) {
         date.text = item.date
         setting.setOnClickListener { listener?.onHeaderSettingClick() }
-        title.setText(item.textId)
+        title.text = item.text
     }
 
     private fun BannerViewHolder.bind(item: ShowCycleAdapterItem.Banner) {
@@ -77,10 +77,10 @@ class ShowCycleAdapter(
     }
 
     private fun ItemViewHolder.bind(item: ShowCycleAdapterItem.Item) {
-        image.setImageResource(item.resId)
+        image.setImageResource(item.resourceId)
         title.text = item.title
         nextCycle.text = item.nextCycleDate
-        dueDate.text = item.dueDate
+        dueDate.text = item.dueDate.toString()
         nextButton.setOnClickListener { listener?.onItemNextClick(item.itemId) }
     }
 

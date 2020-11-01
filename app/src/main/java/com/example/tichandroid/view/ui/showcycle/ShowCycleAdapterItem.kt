@@ -1,7 +1,7 @@
 package com.example.tichandroid.view.ui.showcycle
 
-import com.example.tichandroid.R
 import com.example.tichandroid.data.model.Item
+import com.mashup.android.base.extension.calculateDueDateFromToday
 
 sealed class ShowCycleAdapterItem(val id: Int) {
 
@@ -10,13 +10,12 @@ sealed class ShowCycleAdapterItem(val id: Int) {
 
     data class Header(
         val date: String,
-        val textId: Int
-    ) : ShowCycleAdapterItem("Header-$date".hashCode())
+        val text: String
+    ) : ShowCycleAdapterItem("Header-$date-$text".hashCode())
 
     data class Banner(
-        val text: String,
         val resId: Int
-    ) : ShowCycleAdapterItem("Banner-${text}".hashCode())
+    ) : ShowCycleAdapterItem("Banner-${resId}".hashCode())
 
     data class ItemHeader(
         val itemCount: Int
@@ -24,14 +23,25 @@ sealed class ShowCycleAdapterItem(val id: Int) {
 
     data class Item(
         val itemId: Int,
-        val resId: Int,
+        val categoryId: Int,
+        val resourceId: Int,
         val title: String,
         val nextCycleDate: String,
-        val dueDate: String,
-        val cycle: String
+        val dueDate: Int,
+        val cycle: Int,
+        val categoryNameKey: Int
     ) : ShowCycleAdapterItem(itemId)
 }
 
-fun List<Item>.toShowCycleAdapterItems(): List<ShowCycleAdapterItem> {
-    return listOf(ShowCycleAdapterItem.Banner("Sample Text", R.drawable.ic_close))
+fun List<Item>.toShowCycleAdapterItems(): List<ShowCycleAdapterItem.Item> = map {
+    ShowCycleAdapterItem.Item(
+        itemId = it.id,
+        categoryId = it.categoryId,
+        resourceId = it.getResourceId(),
+        title = it.title,
+        nextCycleDate = it.scheduledDate,
+        dueDate = calculateDueDateFromToday(it.scheduledDate),
+        cycle = it.cycle,
+        categoryNameKey = it.getCategoryNameKey()
+    )
 }
