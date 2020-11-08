@@ -1,9 +1,7 @@
 package com.example.tichandroid.view.ui.items
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +14,6 @@ import com.example.tichandroid.base.BaseViewModelFragment
 import com.example.tichandroid.util.RxEventBus
 import com.example.tichandroid.view.ui.CycleDialogFragment
 import com.example.tichandroid.view.ui.StartDateDialogFragment
-import com.example.tichandroid.view.ui.showcycle.ShowCycleActivity
 import com.example.tichandroid.viewmodel.ShavingViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mashup.android.base.extension.getIntOrNull
@@ -43,6 +40,9 @@ class ItemFragment : BaseViewModelFragment() {
     private lateinit var result: List<String>
     private var choiceValue by Delegates.notNull<Int>()
     private lateinit var choiceForm: String
+
+    private lateinit var date: List<String>
+    private lateinit var dateResult: String
 
     private val itemName by lazy {
         arguments?.getIntOrNull(KEY_ITEM_NAME_RESOURCE_ID)?.let { getString(it) }
@@ -107,12 +107,12 @@ class ItemFragment : BaseViewModelFragment() {
                 else -> {
                     clickBtn()
 
-                    Handler().postDelayed(::originBtn, 1000)
+                    //Handler().postDelayed(::originBtn, 1000)
 
                     viewModel.saveItem(
                         txtItem.text.toString(),
                         choiceValue,
-                        txtDate.text.toString(),
+                        dateResult,
                         editTitle.text.toString()
                     ).observeOnMain()
                         .subscribeWithErrorLogger {
@@ -130,6 +130,10 @@ class ItemFragment : BaseViewModelFragment() {
 
         RxEventBus.subjectSetDate.subscribe {
             txtDate.text = it
+
+            date = txtDate.text.split(".")
+            dateResult = date[0] + "-" + date[1] + "-" + date[2]
+
         }
 
         RxEventBus.subjectSetCycle.subscribe {
